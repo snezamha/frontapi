@@ -12,6 +12,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as SonnerToaster } from "@/components/ui/sonner";
+import AuthProvider from "@/providers/auth.provider";
 
 type Props = {
   children: React.ReactNode;
@@ -50,11 +51,13 @@ export default async function RootLayout(props: Props) {
       >
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <NextIntlClientProvider messages={messages} locale={locale}>
-            <DirectionProvider direction={direction}>
-              {children}
-              <Toaster />
-              <SonnerToaster />
-            </DirectionProvider>
+            <AuthProvider>
+              <DirectionProvider direction={direction}>
+                {children}
+                <Toaster />
+                <SonnerToaster />
+              </DirectionProvider>
+            </AuthProvider>
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>

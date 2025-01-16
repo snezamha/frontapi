@@ -21,6 +21,33 @@
     "unauthorized": "Unauthorized",
     "tryAgain": "Try again"
   },
+  "auth": {
+    "authentication": "Authentication",
+    "login": "Login",
+    "logout": "Logout",
+    "github": "GitHub",
+    "google": "Google",
+    "description": "Click here to login with:",
+    "errorGoogle": "Something went wrong while logging in with your Google account.",
+    "errorGitHub": "Something went wrong while logging in with your GitHub account."
+  },
+  "profileInfo": {
+    "home": "Home",
+    "profile": "Profile",
+    "github": "Github",
+    "logout": "Logout"
+  },
+  "profile": {
+    "title": "Profile",
+    "fullName": "Full Name",
+    "update": "Update",
+    "updating": "Updating",
+    "updatedSuccessfully": "Profile updated successfully",
+    "somethingWentWrong": "Something went wrong, please try again",
+    "nameRequired": "Name is required",
+    "nameMinLength": "Name must be at least 3 characters",
+    "nameMaxLength": "Name cannot be more than 50 characters"
+  },
   "footer": {
     "copyRight": "CopyRight © {year} by FrontAPI،, All rights reserved.",
     "viewSource": "View Source Code"

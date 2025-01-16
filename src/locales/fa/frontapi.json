@@ -21,6 +21,33 @@
     "unauthorized": "غیر مجاز",
     "tryAgain": "دوباره تلاش کنید"
   },
+  "auth": {
+    "authentication": "احراز هویت",
+    "login": "ورود",
+    "logout": "خروج",
+    "github": "گیت‌هاب",
+    "google": "گوگل",
+    "description": "برای ورود یکی از موارد زیر را کلیک کنید:",
+    "errorGoogle": "در هنگام ورود با حساب گوگل شما مشکلی رخ داد.",
+    "errorGitHub": "در هنگام ورود با حساب گیت‌هاب شما مشکلی رخ داد."
+  },
+  "profileInfo": {
+    "home": "خانه",
+    "profile": "پروفایل",
+    "github": "گیت‌هاب",
+    "logout": "خروج"
+  },
+  "profile": {
+    "title": "پروفایل",
+    "fullName": "نام کامل",
+    "update": "به‌روزرسانی",
+    "updating": "در حال به‌روزرسانی",
+    "updatedSuccessfully": "پروفایل با موفقیت به‌روزرسانی شد",
+    "somethingWentWrong": "مشکلی پیش آمد، لطفاً دوباره تلاش کنید",
+    "nameRequired": "وارد کردن نام الزامی است",
+    "nameMinLength": "نام باید حداقل ۳ کاراکتر باشد",
+    "nameMaxLength": "نام نباید بیشتر از ۵۰ کاراکتر باشد"
+  },
   "footer": {
     "copyRight": "کپی رایت © {year} توسط FrontAPI، تمامی حقوق مطالب محفوظ است.",
     "viewSource": "مشاهده کد منبع"

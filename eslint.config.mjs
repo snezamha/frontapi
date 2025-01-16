@@ -1,7 +1,7 @@
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
-import { FlatCompat } from '@eslint/eslintrc';
-import eslintJs from '@eslint/js';
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+import { FlatCompat } from "@eslint/eslintrc";
+import eslintJs from "@eslint/js";
 const { recommended } = eslintJs;
 
 const __filename = fileURLToPath(import.meta.url);
@@ -14,7 +14,7 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.config({
-    extends: ['next', 'next/typescript', 'next/core-web-vitals', 'prettier'],
+    extends: ["next", "next/typescript", "next/core-web-vitals"],
   }),
 ];
 

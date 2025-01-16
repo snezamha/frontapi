@@ -6,11 +6,16 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "npx prisma generate"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.10.0",
+    "@prisma/client": "^6.2.1",
+    "@radix-ui/react-avatar": "^1.1.2",
     "@radix-ui/react-direction": "^1.1.0",
     "@radix-ui/react-dropdown-menu": "^2.1.4",
+    "@radix-ui/react-label": "^2.1.1",
     "@radix-ui/react-slot": "^1.1.1",
     "@radix-ui/react-toast": "^1.2.4",
     "class-variance-authority": "^0.7.1",
@@ -18,15 +23,18 @@
     "framer-motion": "^11.18.0",
     "lucide-react": "^0.471.1",
     "next": "15.1.4",
+    "next-auth": "^5.0.0-beta.25",
     "next-intl": "^3.26.3",
     "next-themes": "^0.4.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-hook-form": "^7.54.2",
     "react-world-flags": "^1.6.0",
     "rtl-detect": "^1.1.2",
     "sonner": "^1.7.2",
     "tailwind-merge": "^2.6.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@iconify/react": "^5.2.0",
@@ -35,6 +43,8 @@
     "@types/react-dom": "^19",
     "@types/react-world-flags": "^1.6.0",
     "@types/rtl-detect": "^1.0.3",
+    "eslint": "^9.18.0",
+    "eslint-config-next": "^15.1.4",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"

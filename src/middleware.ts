@@ -12,3 +12,5 @@ export const config = {
     "/((?!api|static|.*\\..*|_next|favicon.ico|sitemap.xml|robots.txt).*)",
   ],
 };
+
+export { auth as authMiddleware } from "@/server/auth";
