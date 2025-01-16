@@ -1,0 +1,28 @@
+{
+  "rootLayout": {
+    "title": "FrontAPI",
+    "description": "FrontAPI یک سیستم مدیریت محتوای منبع باز است که با نکست جی اس ساخته شده است."
+  },
+  "home": {
+    "title": "خانه",
+    "description": "به FrontAPI خوش آمدید"
+  },
+  "loadingText": "در حال بارگذاری...",
+  "locale": {
+    "english": "انگلیسی",
+    "persian": "فارسی"
+  },
+  "error": {
+    "somethingWentWrong": "مشکلی پیش آمده است",
+    "pageNotFound": "متاسفیم، صفحه‌ای که به دنبال آن هستید وجود ندارد یا منتقل شده است.",
+    "goBack": "بازگشت",
+    "backToHome": "بازگشت به خانه",
+    "accessPermission": "مجوز دسترسی",
+    "unauthorized": "غیر مجاز",
+    "tryAgain": "دوباره تلاش کنید"
+  },
+  "footer": {
+    "copyRight": "کپی رایت © {year} توسط FrontAPI، تمامی حقوق مطالب محفوظ است.",
+    "viewSource": "مشاهده کد منبع"
+  }
+}

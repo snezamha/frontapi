@@ -1,0 +1,28 @@
+{
+  "rootLayout": {
+    "title": "FrontAPI",
+    "description": "FrontAPI is an open source CRM build with NextJS."
+  },
+  "home": {
+    "title": "Home",
+    "description": "Welcome to FrontAPI"
+  },
+  "loadingText": "Loading...",
+  "locale": {
+    "english": "English",
+    "persian": "Persian"
+  },
+  "error": {
+    "somethingWentWrong": "Something went wrong",
+    "pageNotFound": "Sorry, the page you are looking for doesn't exist or has been moved.",
+    "goBack": "Go back",
+    "backToHome": "Back to home",
+    "accessPermission": "Access Permission",
+    "unauthorized": "Unauthorized",
+    "tryAgain": "Try again"
+  },
+  "footer": {
+    "copyRight": "CopyRight © {year} by FrontAPI،, All rights reserved.",
+    "viewSource": "View Source Code"
+  }
+}
