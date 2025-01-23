@@ -31,10 +31,27 @@
     "errorGoogle": "در هنگام ورود با حساب گوگل شما مشکلی رخ داد.",
     "errorGitHub": "در هنگام ورود با حساب گیت‌هاب شما مشکلی رخ داد."
   },
+  "dashboardMenu": {
+    "home": "خانه",
+    "dashboard": "داشبورد",
+    "profile": "پروفایل",
+    "projects": "پروژه‌ها",
+    "addProject": "افزودن پروژه",
+    "listOfProjects": "لیست پروژه‌ها",
+    "logout": "خروج"
+  },
+  "breadcrumb": {
+    "dashboard": "داشبورد",
+    "profile": "پروفایل",
+    "projects": "پروژه‌ها",
+    "addProject": "افزودن پروژه",
+    "listOfProjects": "لیست پروژه‌ها",
+    "editProject": "ویرایش پروژه",
+    "projectSettings": "تنظیمات پروژه"
+  },
   "profileInfo": {
     "home": "خانه",
-    "profile": "پروفایل",
-    "github": "گیت‌هاب",
+    "dashboard": "داشبورد",
     "logout": "خروج"
   },
   "profile": {
@@ -47,6 +64,77 @@
     "nameRequired": "وارد کردن نام الزامی است",
     "nameMinLength": "نام باید حداقل ۳ کاراکتر باشد",
     "nameMaxLength": "نام نباید بیشتر از ۵۰ کاراکتر باشد"
+  },
+  "dataTable": {
+    "row": "ردیف",
+    "search": "جستجو",
+    "noRecords": "رکوردی یافت نشد",
+    "next": "بعدی",
+    "previous": "قبلی",
+    "addNew": "افزودن جدید"
+  },
+  "cellActions": {
+    "edit": "ویرایش",
+    "delete": "حذف",
+    "itemDeleted": "مورد با موفقیت حذف شد.",
+    "deleteFailed": "حذف مورد ناموفق بود.",
+    "view": "مشاهده"
+  },
+  "alertModal": {
+    "areYouSure": "آیا مطمئن هستید؟",
+    "thisActionCannotBeUndone": "این عملیات قابل بازگشت نیست.",
+    "cancel": "لغو",
+    "continue": "ادامه"
+  },
+  "entityForm": {
+    "active": "فعال",
+    "add": "افزودن",
+    "delete": "حذف",
+    "anErrorOccurred": "یک خطا رخ داد",
+    "cancel": "لغو",
+    "disabled": "غیرفعال",
+    "next": "بعدی",
+    "previous": "قبلی",
+    "saveChanges": "ذخیره تغییرات",
+    "applying": "در حال اعمال...",
+    "slug": "اسلاگ",
+    "somethingWentWrong": "مشکلی پیش آمد.",
+    "pleaseFillAllRequiredFields": "لطفاً تمامی فیلدهای الزامی را پر کنید"
+  },
+  "projects": {
+    "projects": "پروژه‌ها",
+    "project": "پروژه",
+    "actions": "عملیات",
+    "addProject": "افزودن پروژه",
+    "createdAt": "ایجاد شده در",
+    "editProject": "ویرایش پروژه",
+    "title": "عنوان",
+    "enterTitle": "عنوان را وارد کنید",
+    "titleRequired": "وارد کردن عنوان الزامی است",
+    "unauthorized": "دسترسی غیرمجاز",
+    "titleMinLength": "عنوان باید حداقل ۳ کاراکتر باشد",
+    "titleMaxLength": "عنوان نباید بیشتر از ۵۰ کاراکتر باشد",
+    "projectAddedSuccessfully": "پروژه با موفقیت اضافه شد",
+    "error": {
+      "project_exists": "یک پروژه با این عنوان از قبل وجود دارد"
+    },
+    "projectDeleted": "پروژه حذف شد",
+    "projectDeletedError": "خطا در حذف پروژه",
+    "projectDeletedSuccessfully": "پروژه با موفقیت حذف شد",
+    "projectUpdatedSuccessfully": "پروژه با موفقیت به‌روزرسانی شد",
+    "settings": "تنظیمات",
+    "save": "ذخیره",
+    "cancel": "لغو",
+    "addUser": "افزودن کاربر",
+    "searchUser": "جستجوی کاربر",
+    "noOptionFound": "گزینه‌ای یافت نشد",
+    "user": "کاربر",
+    "userRequired": "کاربر الزامی است",
+    "permissions": "مجوزها",
+    "permissionRequired": "مجوز الزامی است",
+    "atLeastOneUser": "حداقل یک کاربر الزامی است",
+    "remove": "حذف",
+    "projectSharedSuccessfully": "پروژه با موفقیت به اشتراک گذاشته شد"
   },
   "footer": {
     "copyRight": "کپی رایت © {year} توسط FrontAPI، تمامی حقوق مطالب محفوظ است.",

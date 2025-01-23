@@ -13,7 +13,7 @@ const RoutesLayout = async ({ children }: { children: React.ReactNode }) => {
   const user = await currentUser();
   return (
     <div className="flex flex-col min-h-screen w-full">
-      <div className="flex justify-end items-center gap-2 w-full px-5 py-5">
+      <div className="flex justify-end items-center gap-2 w-full px-5 py-4">
         {session ? (
           <ProfileInfo
             user={{

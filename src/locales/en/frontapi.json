@@ -31,10 +31,27 @@
     "errorGoogle": "Something went wrong while logging in with your Google account.",
     "errorGitHub": "Something went wrong while logging in with your GitHub account."
   },
+  "dashboardMenu": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "projects": "Projects",
+    "addProject": "Add Project",
+    "listOfProjects": "List of Projects",
+    "logout": "Logout"
+  },
+  "breadcrumb": {
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "projects": "Projects",
+    "addProject": "Add Project",
+    "listOfProjects": "List of Projects",
+    "editProject": "Edit Project",
+    "projectSettings": "Project Settings"
+  },
   "profileInfo": {
     "home": "Home",
-    "profile": "Profile",
-    "github": "Github",
+    "dashboard": "Dashboard",
     "logout": "Logout"
   },
   "profile": {
@@ -47,6 +64,77 @@
     "nameRequired": "Name is required",
     "nameMinLength": "Name must be at least 3 characters",
     "nameMaxLength": "Name cannot be more than 50 characters"
+  },
+  "dataTable": {
+    "row": "Row",
+    "search": "Search",
+    "noRecords": "No records found",
+    "next": "Next",
+    "previous": "Previous",
+    "addNew": "Add New"
+  },
+  "cellActions": {
+    "edit": "Edit",
+    "delete": "Delete",
+    "itemDeleted": "Item deleted successfully.",
+    "deleteFailed": "Failed to delete item.",
+    "view": "View"
+  },
+  "alertModal": {
+    "areYouSure": "Are you sure?",
+    "thisActionCannotBeUndone": "This action cannot be undone.",
+    "cancel": "Cancel",
+    "continue": "Continue"
+  },
+  "entityForm": {
+    "active": "Active",
+    "add": "Add",
+    "delete": "Delete",
+    "anErrorOccurred": "An error occurred",
+    "cancel": "Cancel",
+    "disabled": "Disabled",
+    "next": "Next",
+    "previous": "Previous",
+    "saveChanges": "Save Changes",
+    "applying": "Applying...",
+    "slug": "Slug",
+    "somethingWentWrong": "Something went wrong.",
+    "pleaseFillAllRequiredFields": "Please fill all required fields"
+  },
+  "projects": {
+    "projects": "Projects",
+    "project": "Project",
+    "actions": "Actions",
+    "addProject": "Add project",
+    "createdAt": "Created at",
+    "editProject": "Edit project",
+    "title": "Title",
+    "enterTitle": "Enter title",
+    "titleRequired": "Title is required",
+    "unauthorized": "Unauthorized access",
+    "titleMinLength": "Title must be at least 3 characters",
+    "titleMaxLength": "Title cannot be more than 50 characters",
+    "projectAddedSuccessfully": "Project added successfully",
+    "error": {
+      "project_exists": "A project with this title already exists"
+    },
+    "projectDeleted": "Project deleted",
+    "projectDeletedError": "Project deleted error",
+    "projectDeletedSuccessfully": "Project deleted successfully",
+    "projectUpdatedSuccessfully": "Project updated successfully",
+    "settings": "Settings",
+    "save": "Save",
+    "cancel": "Cancel",
+    "addUser": "Add User",
+    "searchUser": "Search user",
+    "noOptionFound": "No option found",
+    "user": "User",
+    "userRequired": "User is required",
+    "permissions": "Permissions",
+    "permissionRequired": "Permission is required",
+    "atLeastOneUser": "At least one user is required",
+    "remove": "Remove",
+    "projectSharedSuccessfully": "Project shared successfully"
   },
   "footer": {
     "copyRight": "CopyRight © {year} by FrontAPI،, All rights reserved.",

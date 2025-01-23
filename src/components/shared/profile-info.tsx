@@ -59,9 +59,9 @@ const ProfileInfo = ({ user }: NavbarProps) => {
                 href: "/",
               },
               {
-                name: t("profile"),
-                icon: "heroicons:user",
-                href: "/profile",
+                name: t("dashboard"),
+                icon: "heroicons:tv",
+                href: "/dashboard",
               },
             ].map((item, index) => (
               <Link
@@ -77,15 +77,6 @@ const ProfileInfo = ({ user }: NavbarProps) => {
             ))}
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
-          <DropdownMenuGroup>
-            <Link href="https://github.com/snezamha/frontapi">
-              <DropdownMenuItem className="flex items-center gap-2 text-sm font-medium text-default-600 capitalize px-3 py-1.5 cursor-pointer">
-                <Icon icon="octicon:mark-github-24" className="w-4 h-4" />
-                {t("github")}
-              </DropdownMenuItem>
-            </Link>
-          </DropdownMenuGroup>
-          <DropdownMenuSeparator className="mb-0 dark:bg-background" />
           <DropdownMenuItem
             className="flex items-center gap-2 text-sm font-medium text-default-600 capitalize my-1 px-3 cursor-pointer"
             onSelect={(event) => {

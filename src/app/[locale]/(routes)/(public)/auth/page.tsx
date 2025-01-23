@@ -14,7 +14,7 @@ export async function generateMetadata(props: Props) {
   const messages = await getMessages();
   const t = createTranslator({ locale, messages });
   return {
-    title: t("auth.authentication") + " | " + t("auth.login"),
+    title: t("auth.authentication"),
   };
 }
 

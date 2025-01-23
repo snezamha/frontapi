@@ -3,7 +3,11 @@ import localFont from "next/font/local";
 import { Inter } from "next/font/google";
 const rtlFont = localFont({ src: "../../assets/fonts/IRANSans.ttf" });
 const ltrFont = Inter({ subsets: ["latin"] });
-import { createTranslator, NextIntlClientProvider } from "next-intl";
+import {
+  AbstractIntlMessages,
+  createTranslator,
+  NextIntlClientProvider,
+} from "next-intl";
 import { getMessages } from "next-intl/server";
 import { getLangDir } from "rtl-detect";
 import DirectionProvider from "@/providers/direction-provider";
@@ -12,7 +16,8 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as SonnerToaster } from "@/components/ui/sonner";
-import AuthProvider from "@/providers/auth.provider";
+import AuthProvider from "@/providers/auth-provider";
+import { ModalProvider } from "@/providers/modal-provider";
 
 type Props = {
   children: React.ReactNode;
@@ -22,7 +27,7 @@ type Props = {
 export async function generateMetadata(props: Props) {
   const params = await props.params;
   const { locale } = params;
-  const messages = await getMessages();
+  const messages: AbstractIntlMessages = await getMessages({ locale });
   const t = createTranslator({ locale, messages });
   return {
     title: {
@@ -53,9 +58,11 @@ export default async function RootLayout(props: Props) {
           <NextIntlClientProvider messages={messages} locale={locale}>
             <AuthProvider>
               <DirectionProvider direction={direction}>
-                {children}
-                <Toaster />
-                <SonnerToaster />
+                <ModalProvider>
+                  {children}
+                  <Toaster />
+                  <SonnerToaster />
+                </ModalProvider>
               </DirectionProvider>
             </AuthProvider>
           </NextIntlClientProvider>
