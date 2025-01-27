@@ -16,7 +16,7 @@ export const ProjectsClient: React.FC<DataProps> = ({ data }) => {
         name={t("projects")}
         columns={columns}
         data={data}
-        addNewLink="/dashboard/projects/add"
+        addNewLink="/projects/add"
       />
     </>
   );

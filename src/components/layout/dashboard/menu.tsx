@@ -1,5 +1,4 @@
 "use client";
-
 import { Link } from "@/i18n/routing";
 import { Ellipsis } from "lucide-react";
 import { usePathname } from "next/navigation";
@@ -17,7 +16,6 @@ import {
 } from "@/components/ui/tooltip";
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { signOut } from "next-auth/react";
 import { Icon } from "@/components/shared/icon";
 
 export function Menu() {
@@ -28,9 +26,9 @@ export function Menu() {
   const direction = getLangDir(params?.locale ?? "");
 
   return (
-    <ScrollArea className="[&>div>div[style]]:!block" dir={direction}>
-      <nav className="mt-6 h-full w-full">
-        <ul className="h-full flex flex-col min-h-[calc(100vh-48px-36px-16px-32px)] lg:min-h-[calc(100vh-32px-40px-32px)] items-start space-y-1 px-4">
+    <ScrollArea className="h-[calc(100vh-8rem)] px-2" dir={direction}>
+      <nav className="flex w-full flex-col">
+        <ul className="items-start space-y-1 px-4">
           {menuList.map(({ groupLabel, menus }, index) => (
             <li className={cn("w-full", groupLabel ? "pt-5" : "")} key={index}>
               {groupLabel ? (
@@ -98,22 +96,6 @@ export function Menu() {
               )}
             </li>
           ))}
-          <li className="w-full">
-            <Button
-              onClick={() => {
-                signOut({
-                  callbackUrl: `${window.location.origin}`,
-                });
-              }}
-              variant="outline"
-              className="w-full justify-center h-10 mt-5"
-            >
-              <span className="me-4">
-                <Icon icon="heroicons:power" />
-              </span>
-              <p className="whitespace-nowrap">{t("logout")}</p>
-            </Button>
-          </li>
         </ul>
       </nav>
     </ScrollArea>

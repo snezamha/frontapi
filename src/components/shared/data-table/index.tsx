@@ -42,6 +42,7 @@ export function DataTable<TData, TValue>({
   addNewLink,
 }: DataTableProps<TData, TValue>) {
   const [globalFilter, setGlobalFilter] = useState<string>("");
+
   const table = useReactTable({
     data,
     columns,
@@ -62,7 +63,9 @@ export function DataTable<TData, TValue>({
       });
     },
   });
+
   const t = useTranslations("dataTable");
+
   return (
     <>
       <div className="flex flex-col gap-4 sm:flex-row items-center py-4 px-5">
@@ -93,65 +96,65 @@ export function DataTable<TData, TValue>({
         </div>
       </div>
       <Separator />
-      <div className="w-full overflow-x-auto">
-        <div className="min-w-max">
-          <Table className="w-full table-auto">
-            <TableHeader className="bg-muted">
-              {table.getHeaderGroups().map((headerGroup) => (
-                <TableRow key={headerGroup.id}>
-                  {headerGroup.headers.map((header) => {
-                    return (
-                      <TableHead
-                        className="text-start py-2 sm:py-4"
-                        key={header.id}
-                      >
-                        {header.isPlaceholder
-                          ? null
-                          : flexRender(
-                              header.column.columnDef.header,
-                              header.getContext(),
-                            )}
-                      </TableHead>
-                    );
-                  })}
+
+      <div className="max-w-full overflow-x-auto">
+        <Table className="w-full table-auto">
+          <TableHeader className="bg-muted">
+            {table.getHeaderGroups().map((headerGroup) => (
+              <TableRow key={headerGroup.id}>
+                {headerGroup.headers.map((header) => {
+                  return (
+                    <TableHead
+                      className="text-start py-2 sm:py-4"
+                      key={header.id}
+                    >
+                      {header.isPlaceholder
+                        ? null
+                        : flexRender(
+                            header.column.columnDef.header,
+                            header.getContext(),
+                          )}
+                    </TableHead>
+                  );
+                })}
+              </TableRow>
+            ))}
+          </TableHeader>
+
+          <TableBody className="text-start">
+            {table.getRowModel().rows?.length ? (
+              table.getRowModel().rows.map((row) => (
+                <TableRow
+                  key={row.id}
+                  data-state={row.getIsSelected() && "selected"}
+                >
+                  {row.getVisibleCells().map((cell) => (
+                    <TableCell
+                      key={cell.id}
+                      className="h-[75px] px-2 sm:px-4 py-2 sm:py-4"
+                    >
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext(),
+                      )}
+                    </TableCell>
+                  ))}
                 </TableRow>
-              ))}
-            </TableHeader>
-            <TableBody className="text-start">
-              {table.getRowModel().rows?.length ? (
-                table.getRowModel().rows.map((row) => (
-                  <TableRow
-                    key={row.id}
-                    data-state={row.getIsSelected() && "selected"}
-                  >
-                    {row.getVisibleCells().map((cell) => (
-                      <TableCell
-                        key={cell.id}
-                        className="h-[75px] px-2 sm:px-4 py-2 sm:py-4"
-                      >
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext(),
-                        )}
-                      </TableCell>
-                    ))}
-                  </TableRow>
-                ))
-              ) : (
-                <TableRow>
-                  <TableCell
-                    colSpan={columns.length}
-                    className="h-20 text-center"
-                  >
-                    {t("noRecords")}
-                  </TableCell>
-                </TableRow>
-              )}
-            </TableBody>
-          </Table>
-        </div>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell
+                  colSpan={columns.length}
+                  className="h-20 text-center"
+                >
+                  {t("noRecords")}
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
       </div>
-      {/* Pagination Controls */}
+
       <div className="flex items-center justify-center gap-2 py-4">
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between sm:py-4 sm:px-10">
           <div className="text-sm text-muted-foreground text-center"></div>

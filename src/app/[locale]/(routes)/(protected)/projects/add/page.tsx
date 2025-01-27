@@ -21,9 +21,8 @@ export async function generateMetadata(props: Props) {
 const ProjectPage = async () => {
   const t = await getTranslations("breadcrumb");
   const breadcrumbItems = [
-    { title: t("dashboard"), link: "/" },
-    { title: t("projects"), link: "/dashboard/projects" },
-    { title: t("addProject"), link: `/dashboard/projects/add` },
+    { title: t("projects"), link: "/projects" },
+    { title: t("addProject"), link: `/projects/add` },
   ];
   return (
     <div>

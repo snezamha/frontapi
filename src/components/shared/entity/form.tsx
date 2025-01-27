@@ -125,8 +125,8 @@ export const EntityAdminForm = <T extends Record<string, unknown>>({
   const handleFinalSubmit: SubmitHandler<T> = async (values) => {
     try {
       await onSubmit(values);
+      router.push(`/${entityName}s`);
       router.refresh();
-      router.push(`/dashboard/${entityName}s`);
     } catch (error) {
       toast({
         variant: "destructive",
@@ -162,6 +162,8 @@ export const EntityAdminForm = <T extends Record<string, unknown>>({
     setLoading(true);
     try {
       await onDelete(initData.id);
+      router.push(`/${entityName}s`);
+      router.refresh();
     } catch (error) {
       toast({
         variant: "destructive",
@@ -170,8 +172,6 @@ export const EntityAdminForm = <T extends Record<string, unknown>>({
       });
     } finally {
       setOpen(false);
-      router.push(`/dashboard/${entityName}s`);
-      router.refresh();
     }
   };
   return (
@@ -280,7 +280,7 @@ export const EntityAdminForm = <T extends Record<string, unknown>>({
                     <Button
                       type="button"
                       variant="outline"
-                      onClick={() => router.push(`/dashboard/${entityName}s`)}
+                      onClick={() => router.push(`/${entityName}s`)}
                     >
                       {tEntityForm("cancel")}
                     </Button>

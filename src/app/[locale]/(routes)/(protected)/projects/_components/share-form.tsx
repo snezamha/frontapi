@@ -176,9 +176,12 @@ const ShareProjectForm: React.FC<ShareProjectModalProps> = ({ projectId }) => {
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <div className="px-4 py-4">
           {loadingShares ? (
-            <Loading />
+            <div className="flex w-full h-36 justify-center items-center">
+              <Loading />
+            </div>
           ) : (
             <>
+              {" "}
               {fields.map((field, index) => {
                 const selectedUserIdsInOtherRows = fields
                   .filter((_, i) => i !== index)
@@ -328,17 +331,19 @@ const ShareProjectForm: React.FC<ShareProjectModalProps> = ({ projectId }) => {
                   </div>
                 );
               })}
-              <Button
-                type="button"
-                variant="outline"
-                onClick={() => append({ userId: "", permissions: [] })}
-                className="mb-4"
-              >
-                <Icon icon="heroicons-outline:plus" />
-                {t("addUser")}
-              </Button>
             </>
           )}
+
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => append({ userId: "", permissions: [] })}
+            className="mb-4"
+          >
+            <Icon icon="heroicons-outline:plus" />
+            {t("addUser")}
+          </Button>
+
           <div className="flex w-full justify-between pt-5">
             <Button disabled={loading} type="submit">
               {t("save")}
@@ -347,7 +352,7 @@ const ShareProjectForm: React.FC<ShareProjectModalProps> = ({ projectId }) => {
               type="button"
               variant="outline"
               onClick={() => {
-                router.push(`/dashboard/projects`);
+                router.push(`/projects`);
               }}
             >
               {t("cancel")}

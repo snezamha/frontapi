@@ -1,3 +1,4 @@
+import { Shell } from "@/components/layout/shell";
 import { createTranslator, useTranslations } from "next-intl";
 import { getMessages } from "next-intl/server";
 
@@ -20,10 +21,10 @@ export default function Home() {
 
   return (
     <>
-      <main className="flex flex-col gap-8 items-start">
+      <Shell className="max-w-6xl gap-0">
         <h1 className="text-3xl">{t("title")}</h1>
         <p className="text-lg">{t("description")}</p>
-      </main>
+      </Shell>
     </>
   );
 }

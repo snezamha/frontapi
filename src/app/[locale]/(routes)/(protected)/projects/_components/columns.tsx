@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { formatDate } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { deleteProject } from "@/actions/projects";
-import { Settings } from "lucide-react";
+import { Monitor, Settings } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 export type ProjectsProps = {
@@ -45,15 +45,20 @@ export const useColumns = (locale: string): ColumnDef<ProjectsProps>[] => {
             id={row.getValue("id")}
             actions={[
               {
+                label: t("dashboard"),
+                icon: <Monitor className="w-4 h-4" />,
+                onClick: () =>
+                  router.push(`/${row.getValue("id")}/dashboard`),
+                className: "",
+              },
+              {
                 label: t("settings"),
                 icon: <Settings className="w-4 h-4" />,
                 onClick: () =>
-                  router.push(
-                    `/dashboard/projects/${row.getValue("id")}/settings`,
-                  ),
+                  router.push(`/projects/${row.getValue("id")}/settings`),
               },
             ]}
-            editContext="dashboard/projects"
+            editContext="projects"
             basePath=""
             onDelete={async () => {
               try {

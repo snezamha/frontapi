@@ -24,10 +24,8 @@ const Auth = async () => {
     return redirect("/");
   }
   return (
-    <div className="h-full">
-      <div>
-        <AuthComponent />
-      </div>
+    <div className="flex justify-center items-center">
+      <AuthComponent />
     </div>
   );
 };

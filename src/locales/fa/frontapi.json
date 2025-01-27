@@ -32,13 +32,9 @@
     "errorGitHub": "در هنگام ورود با حساب گیت‌هاب شما مشکلی رخ داد."
   },
   "dashboardMenu": {
-    "home": "خانه",
     "dashboard": "داشبورد",
     "profile": "پروفایل",
-    "projects": "پروژه‌ها",
-    "addProject": "افزودن پروژه",
-    "listOfProjects": "لیست پروژه‌ها",
-    "logout": "خروج"
+    "projects": "پروژه‌ها"
   },
   "breadcrumb": {
     "dashboard": "داشبورد",
@@ -47,11 +43,13 @@
     "addProject": "افزودن پروژه",
     "listOfProjects": "لیست پروژه‌ها",
     "editProject": "ویرایش پروژه",
-    "projectSettings": "تنظیمات پروژه"
+    "projectSettings": "تنظیمات پروژه",
+    "dashboardTitle": "داشبورد {title}"
   },
   "profileInfo": {
     "home": "خانه",
-    "dashboard": "داشبورد",
+    "profile": "پروفایل",
+    "listOfProjects": "لیست پروژه‌ها",
     "logout": "خروج"
   },
   "profile": {
@@ -134,7 +132,13 @@
     "permissionRequired": "مجوز الزامی است",
     "atLeastOneUser": "حداقل یک کاربر الزامی است",
     "remove": "حذف",
-    "projectSharedSuccessfully": "پروژه با موفقیت به اشتراک گذاشته شد"
+    "projectSharedSuccessfully": "پروژه با موفقیت به اشتراک گذاشته شد",
+    "projectSwitcher": {
+      "selectProject": "انتخاب پروژه",
+      "noProjectFound": "پروژه‌ای یافت نشد",
+      "projects": "پروژه‌ها"
+    },
+    "dashboard": "داشبورد"
   },
   "footer": {
     "copyRight": "کپی رایت © {year} توسط FrontAPI، تمامی حقوق مطالب محفوظ است.",

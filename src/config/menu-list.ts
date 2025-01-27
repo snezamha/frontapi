@@ -21,51 +21,44 @@ export function getMenuList(
   pathname: string,
   t: (key: string) => string,
 ): Group[] {
+  const isProject = /^\/[a-fA-F0-9]{24}\/.*$/.test(pathname);
+
   return [
     {
       groupLabel: "",
       menus: [
         {
-          href: "/",
-          label: t("home"),
-          active: pathname === "/",
-          icon: "heroicons:home",
-        },
-        {
-          href: "/dashboard",
-          label: t("dashboard"),
-          active: pathname === "/dashboard",
-          icon: "heroicons:tv",
-        },
-        {
-          href: "/dashboard/profile",
+          href: "/profile",
           label: t("profile"),
-          active: pathname === "/dashboard/profile",
+          active: pathname === "/profile",
           icon: "heroicons:user",
         },
         {
-          href: "",
+          href: "/projects",
           label: t("projects"),
           icon: "heroicons:puzzle-piece",
-          submenus: [
-            {
-              href: "/dashboard/projects/add",
-              label: t("addProject"),
-              active: pathname === "/dashboard/projects/add",
-            },
-            {
-              href: "/dashboard/projects",
-              label: t("listOfProjects"),
-              active:
-                pathname === "/dashboard/projects" ||
-                /^\/dashboard\/projects\/[a-fA-F0-9]{24}$/.test(pathname) ||
-                /^\/dashboard\/projects\/[a-fA-F0-9]{24}(\/settings)?$/.test(
-                  pathname,
-                ),
-            },
-          ],
+          active:
+            pathname === "/projects" ||
+            pathname === "/projects/add" ||
+            /^\/projects\/[a-fA-F0-9]{24}$/.test(pathname) ||
+            /^\/projects\/[a-fA-F0-9]{24}(\/settings)?$/.test(pathname),
         },
       ],
     },
+    ...(isProject
+      ? [
+          {
+            groupLabel: "",
+            menus: [
+              {
+                href: pathname,
+                label: t("dashboard"),
+                active: /^\/[a-fA-F0-9]{24}(\/dashboard)?$/.test(pathname),
+                icon: "heroicons:tv",
+              },
+            ],
+          },
+        ]
+      : []),
   ];
 }

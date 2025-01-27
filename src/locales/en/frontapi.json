@@ -32,13 +32,9 @@
     "errorGitHub": "Something went wrong while logging in with your GitHub account."
   },
   "dashboardMenu": {
-    "home": "Home",
     "dashboard": "Dashboard",
     "profile": "Profile",
-    "projects": "Projects",
-    "addProject": "Add Project",
-    "listOfProjects": "List of Projects",
-    "logout": "Logout"
+    "projects": "Projects"
   },
   "breadcrumb": {
     "dashboard": "Dashboard",
@@ -47,11 +43,13 @@
     "addProject": "Add Project",
     "listOfProjects": "List of Projects",
     "editProject": "Edit Project",
-    "projectSettings": "Project Settings"
+    "projectSettings": "Project Settings",
+    "dashboardTitle": "{title}'s dashboard"
   },
   "profileInfo": {
     "home": "Home",
-    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "listOfProjects": "List of Projects",
     "logout": "Logout"
   },
   "profile": {
@@ -134,7 +132,13 @@
     "permissionRequired": "Permission is required",
     "atLeastOneUser": "At least one user is required",
     "remove": "Remove",
-    "projectSharedSuccessfully": "Project shared successfully"
+    "projectSharedSuccessfully": "Project shared successfully",
+    "projectSwitcher": {
+      "selectProject": "Select Project",
+      "noProjectFound": "No Project Found",
+      "projects": "Projects"
+    },
+    "dashboard": "Dashboard"
   },
   "footer": {
     "copyRight": "CopyRight © {year} by FrontAPI،, All rights reserved.",

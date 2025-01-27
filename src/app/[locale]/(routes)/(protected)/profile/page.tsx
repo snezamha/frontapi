@@ -20,10 +20,7 @@ export async function generateMetadata(props: Props) {
 
 export default async function Profile() {
   const t = await getTranslations("breadcrumb");
-  const breadcrumbItems = [
-    { title: t("dashboard"), link: "/dashboard" },
-    { title: t("profile"), link: "/dashboardprofile" },
-  ];
+  const breadcrumbItems = [{ title: t("profile"), link: "/profile" }];
   return (
     <div>
       <Breadcrumbs items={breadcrumbItems} />

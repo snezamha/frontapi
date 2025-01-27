@@ -59,9 +59,14 @@ const ProfileInfo = ({ user }: NavbarProps) => {
                 href: "/",
               },
               {
-                name: t("dashboard"),
-                icon: "heroicons:tv",
-                href: "/dashboard",
+                name: t("profile"),
+                icon: "heroicons:user",
+                href: "/profile",
+              },
+              {
+                name: t("listOfProjects"),
+                icon: "heroicons:puzzle-piece",
+                href: "/projects",
               },
             ].map((item, index) => (
               <Link

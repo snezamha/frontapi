@@ -22,14 +22,8 @@ export default function Modal({
   onClose,
   children,
 }: ModalProps) {
-  const onChange = (open: boolean) => {
-    if (!open) {
-      onClose();
-    }
-  };
-
   return (
-    <Dialog open={isOpen} onOpenChange={onChange}>
+    <Dialog open={isOpen} onOpenChange={(open) => !open && onClose()}>
       <DialogContent>
         <DialogHeader className="pt-5 space-y-2">
           <DialogTitle className="text-start">{modalTitle}</DialogTitle>

@@ -1,14 +1,18 @@
 "use client";
-
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter } from "next/navigation";
-import { Trash2, Pencil } from "lucide-react";
-
+import { Trash2, Pencil, Ellipsis } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import AlertModal from "../modal/alert-modal";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu";
 
 interface Action {
   label: string;
@@ -40,12 +44,14 @@ export const CellAction = ({
   const [open, setOpen] = useState(false);
   const t = useTranslations("cellActions");
   const { toast } = useToast();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const handleDelete = async () => {
     if (!onDelete) return;
     setLoading(true);
     try {
       await onDelete();
+      router.refresh();
     } catch (error) {
       const errMessage =
         error instanceof Error ? error.message : t("deleteFailed");
@@ -55,7 +61,6 @@ export const CellAction = ({
       });
     } finally {
       setOpen(false);
-      router.refresh();
       setLoading(false);
     }
   };
@@ -63,56 +68,60 @@ export const CellAction = ({
     if (editContext) {
       const editUrl = `${basePath}/${editContext}/${id}`;
       router.push(editUrl);
+      router.refresh();
     }
   };
   return (
-    <div className="flex justify-start space-x-2 rtl:space-x-reverse">
-      {actions.map((action, index) =>
-        action.href ? (
-          <Link
-            key={index}
-            href={action.href}
-            className={`${action.className || ""}`}
-          >
-            {action.icon}
-            {action.label}
-          </Link>
-        ) : (
+    <>
+      <AlertModal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        onConfirm={handleDelete}
+        loading={loading}
+      />
+      <DropdownMenu open={dropdownOpen} onOpenChange={setDropdownOpen}>
+        <DropdownMenuTrigger asChild>
           <Button
-            key={index}
-            onClick={action.onClick}
-            color="secondary"
-            size="sm"
-            variant="outline"
-            className={` ${action.className || ""}`}
+            variant="ghost"
+            className="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
           >
-            {action.icon}
-            {action.label}
+            <Ellipsis className="h-4 w-4" />
+            <span className="sr-only">Open menu</span>
           </Button>
-        ),
-      )}
-
-      {editContext && (
-        <Button onClick={() => handleEdit()} variant="default" size="sm">
-          <Pencil className="w-4 h-4" />
-          {t("edit")}
-        </Button>
-      )}
-
-      {onDelete && (
-        <>
-          <AlertModal
-            isOpen={open}
-            onClose={() => setOpen(false)}
-            onConfirm={handleDelete}
-            loading={loading}
-          />
-          <Button onClick={() => setOpen(true)} variant="destructive" size="sm">
-            <Trash2 className="w-4 h-4" />
-            {t("delete")}
-          </Button>
-        </>
-      )}
-    </div>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="center">
+          {editContext && (
+            <DropdownMenuItem onClick={() => handleEdit()}>
+              <Pencil className="w-4 h-4" />
+              {t("edit")}
+            </DropdownMenuItem>
+          )}
+          {onDelete && (
+            <DropdownMenuItem
+              className="text-destructive"
+              onClick={() => {
+                setDropdownOpen(false);
+                setOpen(true);
+              }}
+            >
+              <Trash2 className="w-4 h-4" />
+              {t("delete")}
+            </DropdownMenuItem>
+          )}
+          {actions.map((action, index) => (
+            <div key={`action-${index}`}>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem
+                onClick={action.onClick}
+                className={` ${action.className || ""}`}
+              >
+                {action.icon}
+                {action.label}
+              </DropdownMenuItem>
+            </div>
+          ))}
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </>
   );
 };

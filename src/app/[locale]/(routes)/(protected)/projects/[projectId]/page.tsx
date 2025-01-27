@@ -1,8 +1,8 @@
-import { ProjectsClient } from "./_components/client";
-import { ProjectsProps } from "./_components/columns";
 import { Card } from "@/components/ui/card";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
-import { getAllProjects } from "@/actions/projects";
+import { getProjectById } from "@/actions/projects";
+import { Project } from "@prisma/client";
+import ProjectFormWrapper from "../_components/ProjectFormWrapper";
 import { createTranslator } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 
@@ -16,35 +16,40 @@ export async function generateMetadata(props: Props) {
   const messages = await getMessages();
   const t = createTranslator({ locale, messages });
   return {
-    title: t("breadcrumb.listOfProjects"),
+    title: t("breadcrumb.editProject"),
   };
 }
 
-const Projects = async () => {
+const ProjectPage = async ({
+  params,
+}: {
+  params: Promise<{ projectId: string }>;
+}) => {
+  const projectId = (await params).projectId;
   try {
-    const projects = await getAllProjects();
-    const formattedProjects: ProjectsProps[] = projects.map((item) => ({
-      id: item.id,
-      title: item.title,
-      createdAt: item.createdAt,
-    }));
     const t = await getTranslations("breadcrumb");
+
+    const project = (await getProjectById(projectId)) as Project;
+    if (!project) {
+      return <div></div>;
+    }
     const breadcrumbItems = [
-      { title: t("dashboard"), link: "/dashboard" },
-      { title: t("listOfProjects"), link: "/projects" },
+      { title: t("projects"), link: "/projects" },
+      {
+        title: t("editProject"),
+        link: `/projects/${projectId}`,
+      },
     ];
     return (
       <div>
         <Breadcrumbs items={breadcrumbItems} />
         <Card>
-          <ProjectsClient data={formattedProjects} />
+          <ProjectFormWrapper initData={project} />
         </Card>
       </div>
     );
   } catch (error) {
-    console.error("Error fetching projects:", error);
-    return <div>Error loading projects.</div>;
+    return <div>Error: {(error as Error).message}</div>;
   }
 };
-
-export default Projects;
+export default ProjectPage;

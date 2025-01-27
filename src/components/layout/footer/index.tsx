@@ -1,19 +1,14 @@
 "use client";
 import { useTranslations } from "next-intl";
 import { Icon } from "@/components/shared/icon";
-import { usePathname } from "next/navigation";
 
 export default function Footer() {
   const t = useTranslations("footer");
   const currentYear = new Date().getFullYear();
-  const pathname = usePathname();
-  const isDashboard = pathname.startsWith("/dashboard");
 
   return (
     <footer
-      className={`mt-auto bg-gray-100 dark:bg-gray-800 lg:bg-transparent lg:dark:bg-transparent ${
-        isDashboard ? "xl:ms-[254px]" : ""
-      }`}
+      className={`mt-auto bg-gray-100 dark:bg-gray-800 lg:bg-transparent lg:dark:bg-transparent`}
     >
       <div className="mx-auto w-full max-w-screen-xl p-6 md:py-8">
         <div className="flex flex-col items-center justify-between text-gray-500 dark:text-gray-400 md:flex-row">

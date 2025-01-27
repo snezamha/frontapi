@@ -23,7 +23,7 @@ export function AuthComponent() {
     setIsLoadingGoogle(true);
     try {
       await signIn("google", {
-        callbackUrl: process.env.NEXT_PUBLIC_APP_URL + "/dashboard",
+        callbackUrl: process.env.NEXT_PUBLIC_APP_URL + "/",
         //callbackUrl: "/",
       });
     } catch (error) {
@@ -41,7 +41,7 @@ export function AuthComponent() {
     setIsLoadingGithub(true);
     try {
       await signIn("github", {
-        callbackUrl: process.env.NEXT_PUBLIC_APP_URL + "/dashboard",
+        callbackUrl: process.env.NEXT_PUBLIC_APP_URL + "/",
         //callbackUrl: "/",
       });
     } catch (error) {
