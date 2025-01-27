@@ -141,7 +141,6 @@
     "dashboard": "داشبورد"
   },
   "footer": {
-    "copyRight": "کپی رایت © {year} توسط FrontAPI، تمامی حقوق مطالب محفوظ است.",
-    "viewSource": "مشاهده کد منبع"
+    "copyRight": "کپی رایت © {year} توسط FrontAPI، تمامی حقوق مطالب محفوظ است."
   }
 }

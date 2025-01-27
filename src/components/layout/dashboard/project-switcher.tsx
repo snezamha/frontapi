@@ -1,34 +1,21 @@
 "use client";
+
 import * as React from "react";
-import { Check, ChevronsUpDown } from "lucide-react";
+import ReactSelect from "react-select";
 import { useParams, useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "@/components/ui/command";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { Icon } from "@/components/shared/icon";
+import { usePathname } from "@/i18n/routing";
+import { useSidebar } from "@/providers/sidebar-provider";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
-interface ProjectSwitcherProps
-  extends React.ComponentPropsWithoutRef<typeof PopoverTrigger> {
+interface ProjectSwitcherProps {
   items: { title: string; id: string }[];
+  className?: string;
 }
 
 export default function ProjectSwitcher({
   items = [],
   className,
-  ...props
 }: ProjectSwitcherProps) {
   const params = useParams();
   const router = useRouter();
@@ -38,66 +25,58 @@ export default function ProjectSwitcher({
     value: item.id,
   }));
 
-  const currentProject = formattedItems.find(
-    (item) => item.value === params.projectId,
-  );
+  const pathename = usePathname();
+  const isDirectProjectPath = pathename.startsWith(`/${params?.projectId}`);
 
-  const [openPopover, setOpenPopover] = React.useState(false);
+  const currentProject = isDirectProjectPath
+    ? formattedItems.find((item) => item.value === params?.projectId)
+    : null;
 
-  const onProjectSelect = (project: { value: string; label: string }) => {
-    setOpenPopover(false);
-    router.push(`/${project.value}/dashboard`);
+  const { setOpen } = useSidebar();
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
+
+  const onProjectSelect = (
+    selected: { value: string; label: string } | null,
+  ) => {
+    if (selected) {
+      router.push(`/${selected.value}/dashboard`);
+    } else {
+      router.push(`/projects`);
+    }
+    if (!isDesktop) {
+      setOpen(false);
+    }
   };
 
   const t = useTranslations("projects.projectSwitcher");
+
   return (
-    <>
-      <Popover open={openPopover} onOpenChange={setOpenPopover}>
-        <PopoverTrigger asChild>
-          <Button
-            variant="outline"
-            role="combobox"
-            aria-expanded={openPopover}
-            aria-label="Select a store"
-            className={cn("w-full justify-between", className)}
-            {...props}
-          >
-            <Icon icon="heroicons:folder" />
-            {currentProject?.label}
-            <ChevronsUpDown className="opacity-50" aria-hidden="true" />
-          </Button>
-        </PopoverTrigger>
-        <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-0">
-          <Command>
-            <CommandList>
-              <CommandInput placeholder={t("selectProject")} />
-              <CommandEmpty>{t("noProjectFound")}</CommandEmpty>
-              <CommandGroup heading={t("projects")}>
-                {formattedItems.map((project) => (
-                  <CommandItem
-                    key={project.value}
-                    onSelect={() => onProjectSelect(project)}
-                    className="text-sm flex items-center justify-between"
-                  >
-                    <Icon icon="heroicons:folder" />
-                    <span className="flex-1 text-start">
-                      {project.label}
-                    </span>{" "}
-                    <Check
-                      className={cn(
-                        "h-4 w-4",
-                        currentProject?.value === project.value
-                          ? "opacity-100"
-                          : "opacity-0",
-                      )}
-                    />
-                  </CommandItem>
-                ))}
-              </CommandGroup>
-            </CommandList>
-          </Command>
-        </PopoverContent>
-      </Popover>
-    </>
+    <div className={className}>
+      <ReactSelect
+        options={formattedItems}
+        value={currentProject || null}
+        onChange={(selected) =>
+          onProjectSelect(selected as { value: string; label: string } | null)
+        }
+        placeholder={t("selectProject")}
+        isSearchable
+        noOptionsMessage={() => t("noProjectFound")}
+        className="w-full"
+        styles={{
+          control: (base) => ({
+            ...base,
+            borderColor: "#ccc",
+            boxShadow: "none",
+            "&:hover": { borderColor: "#aaa" },
+          }),
+          option: (base, state) => ({
+            ...base,
+            backgroundColor: state.isSelected ? "#f0f0f0" : "white",
+            "&:hover": { backgroundColor: "#e6e6e6" },
+            color: "#333",
+          }),
+        }}
+      />
+    </div>
   );
 }

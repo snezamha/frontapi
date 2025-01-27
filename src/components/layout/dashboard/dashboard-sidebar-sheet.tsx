@@ -39,12 +39,9 @@ export function DashboardSidebarSheet({
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <Button
-          variant="ghost"
+          variant="outline"
           size="icon"
-          className={cn(
-            "size-5 hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0",
-            className,
-          )}
+          className={cn("", className)}
           {...props}
         >
           <MenuIcon size={20} />
@@ -60,18 +57,14 @@ export function DashboardSidebarSheet({
           <SheetHeader>
             <SheetTitle></SheetTitle>
             <SheetDescription></SheetDescription>
-            <Button
-              className="flex justify-center items-center"
-              variant="link"
-              asChild
-            >
-              <Link href="/" className="flex items-center gap-2">
-                <Logo className="text-default-900 h-8 w-8 [&>path:nth-child(3)]:text-background [&>path:nth-child(2)]:text-background" />
-                <SheetTitle className="font-bold text-lg">
-                  {t("title")}
-                </SheetTitle>
-              </Link>
-            </Button>
+            <Link href="/" className="flex gap-2 items-center">
+              <Button variant="outline" size="icon">
+                <Logo className="h-8 w-8 text-default-900 [&>path:nth-child(2)]:text-background [&>path:nth-child(3)]:text-background" />
+              </Button>
+              <h1 className="text-xl font-semibold text-default-900">
+                {t("title")}
+              </h1>
+            </Link>
           </SheetHeader>
         </SheetClose>
         {children}

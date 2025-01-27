@@ -181,7 +181,6 @@ const ShareProjectForm: React.FC<ShareProjectModalProps> = ({ projectId }) => {
             </div>
           ) : (
             <>
-              {" "}
               {fields.map((field, index) => {
                 const selectedUserIdsInOtherRows = fields
                   .filter((_, i) => i !== index)

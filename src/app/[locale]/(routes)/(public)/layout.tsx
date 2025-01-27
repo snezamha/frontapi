@@ -18,19 +18,17 @@ const RoutesLayout = async ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="relative flex min-h-screen flex-col">
       <header className="sticky top-0 z-50 w-full border-b bg-background">
-        <div className="flex h-14 items-center">
-          <div className="ltr:pl-6 rtl:pr-6">
-            <Button variant="link" asChild>
-              <Link href="/" className="flex items-center gap-2">
-                <Logo className="h-8 w-8 text-default-900 [&>path:nth-child(2)]:text-background [&>path:nth-child(3)]:text-background" />
-                <h1 className="text-xl font-semibold text-default-900">
-                  {t("title")}
-                </h1>
-              </Link>
+        <div className="flex h-14 items-center px-6">
+          <Link href="/" className="flex gap-2 items-center">
+            <Button variant="outline" size="icon">
+              <Logo className="h-8 w-8 text-default-900 [&>path:nth-child(2)]:text-background [&>path:nth-child(3)]:text-background" />
             </Button>
-          </div>
+            <h1 className="lg:block hidden text-xl font-semibold text-default-900">
+              {t("title")}
+            </h1>
+          </Link>
           <div className="flex flex-1 items-center justify-end space-x-2">
-            <nav className="flex items-center gap-2 px-6 py-4 ">
+            <nav className="flex items-center gap-2">
               {session ? (
                 <ProfileInfo
                   user={{

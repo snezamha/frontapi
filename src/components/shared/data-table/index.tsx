@@ -105,7 +105,7 @@ export function DataTable<TData, TValue>({
                 {headerGroup.headers.map((header) => {
                   return (
                     <TableHead
-                      className="text-start py-2 sm:py-4"
+                      className="text-center py-2 sm:py-4"
                       key={header.id}
                     >
                       {header.isPlaceholder
@@ -121,7 +121,7 @@ export function DataTable<TData, TValue>({
             ))}
           </TableHeader>
 
-          <TableBody className="text-start">
+          <TableBody className="text-center">
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow

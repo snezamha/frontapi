@@ -1,5 +1,4 @@
 "use client";
-import { Link } from "@/i18n/routing";
 import { Ellipsis } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { getLangDir } from "rtl-detect";
@@ -17,6 +16,9 @@ import {
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Icon } from "@/components/shared/icon";
+import { useSidebar } from "@/providers/sidebar-provider";
+import { useMediaQuery } from "@/hooks/use-media-query";
+import { Link } from "@/i18n/routing";
 
 export function Menu() {
   const t = useTranslations("dashboardMenu");
@@ -24,6 +26,8 @@ export function Menu() {
   const menuList = getMenuList(pathname, t);
   const params = useParams<{ locale: string }>();
   const direction = getLangDir(params?.locale ?? "");
+  const { setOpen } = useSidebar();
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
 
   return (
     <ScrollArea className="h-[calc(100vh-8rem)] px-2" dir={direction}>
@@ -65,6 +69,9 @@ export function Menu() {
                                 ? "secondary"
                                 : "ghost"
                             }
+                            onClick={() => {
+                              if (!isDesktop) setOpen(false);
+                            }}
                             className="w-full justify-start h-10 mb-1"
                             asChild
                           >

@@ -141,7 +141,6 @@
     "dashboard": "Dashboard"
   },
   "footer": {
-    "copyRight": "CopyRight © {year} by FrontAPI،, All rights reserved.",
-    "viewSource": "View Source Code"
+    "copyRight": "CopyRight © {year} by FrontAPI،, All rights reserved."
   }
 }

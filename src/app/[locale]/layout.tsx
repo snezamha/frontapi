@@ -17,7 +17,7 @@ import { routing } from "@/i18n/routing";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as SonnerToaster } from "@/components/ui/sonner";
 import AuthProvider from "@/providers/auth-provider";
-import { ModalProvider } from "@/providers/modal-provider";
+import NextTopLoader from "nextjs-toploader";
 
 type Props = {
   children: React.ReactNode;
@@ -54,15 +54,22 @@ export default async function RootLayout(props: Props) {
         suppressHydrationWarning={true}
         className={`${locale === "fa" ? rtlFont.className : ltrFont.className}`}
       >
+        <NextTopLoader
+          color="#000"
+          initialPosition={0.08}
+          crawlSpeed={50}
+          height={3}
+          crawl={true}
+          showSpinner={false}
+          speed={100}
+        />
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <NextIntlClientProvider messages={messages} locale={locale}>
             <AuthProvider>
               <DirectionProvider direction={direction}>
-                <ModalProvider>
-                  {children}
-                  <Toaster />
-                  <SonnerToaster />
-                </ModalProvider>
+                {children}
+                <Toaster />
+                <SonnerToaster />
               </DirectionProvider>
             </AuthProvider>
           </NextIntlClientProvider>
