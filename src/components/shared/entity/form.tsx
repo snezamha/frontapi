@@ -38,7 +38,8 @@ interface Section<T> {
       label: string;
       translateOption?: boolean | null;
     }>;
-    render?: (props: { [key: string]: unknown }) => JSX.Element;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    render?: (props: any) => JSX.Element;
     placeholder?: string;
     className?: string;
     sortLevel?: number;
@@ -47,6 +48,7 @@ interface Section<T> {
 }
 
 interface EntityFormProps<T> {
+  basePath?: string;
   entityName: string;
   entitySchema: z.ZodType<T>;
   entityDefaultValues: Partial<T>;
@@ -58,6 +60,7 @@ interface EntityFormProps<T> {
 }
 
 export const EntityAdminForm = <T extends Record<string, unknown>>({
+  basePath,
   entityName,
   entitySchema,
   entityDefaultValues,
@@ -125,7 +128,7 @@ export const EntityAdminForm = <T extends Record<string, unknown>>({
   const handleFinalSubmit: SubmitHandler<T> = async (values) => {
     try {
       await onSubmit(values);
-      router.push(`/${entityName}s`);
+      router.push(`${basePath}/${entityName}s`);
       router.refresh();
     } catch (error) {
       toast({
@@ -162,7 +165,7 @@ export const EntityAdminForm = <T extends Record<string, unknown>>({
     setLoading(true);
     try {
       await onDelete(initData.id);
-      router.push(`/${entityName}s`);
+      router.push(`${basePath}/${entityName}s`);
       router.refresh();
     } catch (error) {
       toast({
@@ -280,7 +283,7 @@ export const EntityAdminForm = <T extends Record<string, unknown>>({
                     <Button
                       type="button"
                       variant="outline"
-                      onClick={() => router.push(`/${entityName}s`)}
+                      onClick={() => router.push(`${basePath}/${entityName}s`)}
                     >
                       {tEntityForm("cancel")}
                     </Button>

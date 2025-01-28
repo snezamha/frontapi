@@ -46,6 +46,7 @@ model Project {
   ownerId      String        @db.ObjectId
   owner        User          @relation(fields: [ownerId], references: [id])
   userProjects UserProject[] @relation("UserProjects")
+  Category     Categories[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -63,4 +64,20 @@ model UserProject {
 
   @@unique([userId, projectId])
   @@map("user_projects")
+}
+
+model Categories {
+  id        String       @id @default(auto()) @map("_id") @db.ObjectId
+  title     String       @unique
+  slug      String?      @unique
+  type      String
+  parentId  String?      @db.ObjectId
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  parent    Categories?  @relation("CategoryToCategory", fields: [parentId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  children  Categories[] @relation("CategoryToCategory")
+  project   Project      @relation(fields: [projectId], references: [id])
+  projectId String       @db.ObjectId
+
+  @@map("categories")
 }

@@ -32,9 +32,11 @@
     "errorGitHub": "Something went wrong while logging in with your GitHub account."
   },
   "dashboardMenu": {
-    "dashboard": "Dashboard",
     "profile": "Profile",
-    "projects": "Projects"
+    "projects": "Projects",
+    "dashboard": "Dashboard",
+    "modules": "Modules",
+    "categories": "Categories"
   },
   "breadcrumb": {
     "dashboard": "Dashboard",
@@ -44,7 +46,10 @@
     "listOfProjects": "List of Projects",
     "editProject": "Edit Project",
     "projectSettings": "Project Settings",
-    "dashboardTitle": "{title}'s dashboard"
+    "dashboardTitle": "{title}'s dashboard",
+    "classifications": "Classifications",
+    "addClassification": "Add Classification",
+    "editClassification": "Edit Classification"
   },
   "profileInfo": {
     "home": "Home",
@@ -139,6 +144,33 @@
       "projects": "Projects"
     },
     "dashboard": "Dashboard"
+  },
+  "classifications": {
+    "actions": "Actions",
+    "addClassification": "Add classification",
+    "blog": "Blog",
+    "categoryAddedSuccessfully": "Category added successfully",
+    "categoryDeletedSuccessfully": "Category deleted successfully",
+    "categoryTitleExists": "Category title already exists",
+    "categoryUpdatedSuccessfully": "Category updated successfully",
+    "classifications": "Categories",
+    "editClassification": "Edit classification",
+    "failedToFetchedCategories": "Failed to fetched categories",
+    "group": "Group",
+    "parentCategory": "Parent category",
+    "parentCategoryRequired": "Parent category is required",
+    "product": "Product",
+    "searchCategories": "Search categories",
+    "selectParentCategory": "Select parent category",
+    "selectType": "Select type",
+    "title": "Title",
+    "enterTitle": "Enter title",
+    "titleRequired": "Title is required",
+    "unauthorized": "Unauthorized access",
+    "type": "Type",
+    "typeRequired": "Type is required",
+    "unknownGroupLabel": "Unknown group",
+    "withoutParentCategory": "Without parent category"
   },
   "footer": {
     "copyRight": "CopyRight © {year} by FrontAPI،, All rights reserved."

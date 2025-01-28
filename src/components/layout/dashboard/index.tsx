@@ -31,7 +31,9 @@ export default async function DashboardPanelLayout({
               </DashboardSidebarSheet>
             </DashboardHeader>
           )}
-          <main className="flex-1 overflow-hidden px-6 pt-6">{children}</main>
+          <main className="flex-1 overflow-hidden px-6 pt-6 bg-slate-100 dark:bg-slate-900">
+            {children}
+          </main>
         </div>
       </div>
     </SidebarProvider>

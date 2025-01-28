@@ -32,9 +32,11 @@
     "errorGitHub": "در هنگام ورود با حساب گیت‌هاب شما مشکلی رخ داد."
   },
   "dashboardMenu": {
-    "dashboard": "داشبورد",
     "profile": "پروفایل",
-    "projects": "پروژه‌ها"
+    "projects": "پروژه‌ها",
+    "dashboard": "داشبورد",
+    "modules": "ماژول‌ها",
+    "categories": "دسته‌بندی‌ها"
   },
   "breadcrumb": {
     "dashboard": "داشبورد",
@@ -44,7 +46,10 @@
     "listOfProjects": "لیست پروژه‌ها",
     "editProject": "ویرایش پروژه",
     "projectSettings": "تنظیمات پروژه",
-    "dashboardTitle": "داشبورد {title}"
+    "dashboardTitle": "داشبورد {title}",
+    "classifications": "دسته‌بندی‌ها",
+    "addClassification": "افزودن دسته‌بندی",
+    "editClassification": "ویرایش دسته‌بندی"
   },
   "profileInfo": {
     "home": "خانه",
@@ -139,6 +144,33 @@
       "projects": "پروژه‌ها"
     },
     "dashboard": "داشبورد"
+  },
+  "classifications": {
+    "actions": "عملیات",
+    "addClassification": "افزودن دسته‌بندی",
+    "blog": "وبلاگ",
+    "categoryAddedSuccessfully": "دسته‌بندی با موفقیت اضافه شد",
+    "categoryDeletedSuccessfully": "دسته‌بندی با موفقیت حذف شد",
+    "categoryTitleExists": "عنوان دسته‌بندی از قبل وجود دارد",
+    "categoryUpdatedSuccessfully": "دسته‌بندی با موفقیت به‌روزرسانی شد",
+    "classifications": "دسته‌بندی‌ها",
+    "editClassification": "ویرایش دسته‌بندی",
+    "failedToFetchedCategories": "بارگیری دسته‌بندی‌ها ناموفق بود",
+    "group": "گروه",
+    "parentCategory": "دسته‌بندی والد",
+    "parentCategoryRequired": "دسته‌بندی والد الزامی است",
+    "product": "محصول",
+    "searchCategories": "جستجوی دسته‌بندی‌ها",
+    "selectParentCategory": "انتخاب دسته‌بندی والد",
+    "selectType": "انتخاب نوع",
+    "title": "عنوان",
+    "enterTitle": "وارد کردن عنوان",
+    "titleRequired": "عنوان الزامی است",
+    "unauthorized": "دسترسی غیرمجاز",
+    "type": "نوع",
+    "typeRequired": "نوع الزامی است",
+    "unknownGroupLabel": "گروه ناشناخته",
+    "withoutParentCategory": "بدون دسته‌بندی والد"
   },
   "footer": {
     "copyRight": "کپی رایت © {year} توسط FrontAPI، تمامی حقوق مطالب محفوظ است."

@@ -77,6 +77,7 @@ const ProjectFormWrapper: React.FC<ProjectFormProps> = ({ initData }) => {
 
   return (
     <EntityAdminForm
+      basePath=""
       entityName="project"
       initData={initData}
       entitySchema={projectSchema(t)}

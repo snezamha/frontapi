@@ -251,7 +251,10 @@ export async function updateProject({
     };
   }
 
-  const canEdit = userIsAdmin || userPermissions?.includes("FULLACCESS");
+  const canEdit =
+    userIsAdmin ||
+    userPermissions?.includes("FULLACCESS") ||
+    userPermissions?.includes("EDIT");
   if (!canEdit) {
     return { success: "", error: "unauthorized" };
   }
@@ -312,7 +315,10 @@ export async function deleteProject(projectId: string) {
     };
   }
 
-  const canDelete = userIsAdmin || userPermissions?.includes("FULLACCESS");
+  const canDelete =
+    userIsAdmin ||
+    userPermissions?.includes("FULLACCESS") ||
+    userPermissions?.includes("DELETE");
   if (!canDelete) {
     return { success: "", error: "unauthorized" };
   }
@@ -378,8 +384,8 @@ export async function shareProject({
     };
   }
 
-  const canEdit = userIsAdmin || userPermissions?.includes("FULLACCESS");
-  if (!canEdit) {
+  const canShare = userIsAdmin || userPermissions?.includes("FULLACCESS");
+  if (!canShare) {
     return { success: "", error: "unauthorized" };
   }
 

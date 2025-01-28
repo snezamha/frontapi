@@ -22,7 +22,8 @@ export function getMenuList(
   t: (key: string) => string,
 ): Group[] {
   const isProject = /^\/[a-fA-F0-9]{24}\/.*$/.test(pathname);
-
+  const projectPathMatch = pathname.match(/^\/[a-fA-F0-9]{24}/);
+  const projectBasePath = projectPathMatch ? projectPathMatch[0] : "";
   return [
     {
       groupLabel: "",
@@ -37,11 +38,9 @@ export function getMenuList(
           href: "/projects",
           label: t("projects"),
           icon: "heroicons:puzzle-piece",
-          active:
-            pathname === "/projects" ||
-            pathname === "/projects/add" ||
-            /^\/projects\/[a-fA-F0-9]{24}$/.test(pathname) ||
-            /^\/projects\/[a-fA-F0-9]{24}(\/settings)?$/.test(pathname),
+          active: new RegExp(
+            `^/projects($|/add$|/[a-fA-F0-9]{24}(/settings)?$)`,
+          ).test(pathname),
         },
       ],
     },
@@ -51,10 +50,23 @@ export function getMenuList(
             groupLabel: "",
             menus: [
               {
-                href: pathname,
+                href: `${projectBasePath}/dashboard`,
                 label: t("dashboard"),
                 active: /^\/[a-fA-F0-9]{24}(\/dashboard)?$/.test(pathname),
                 icon: "heroicons:tv",
+              },
+            ],
+          },
+          {
+            groupLabel: t("modules"),
+            menus: [
+              {
+                href: `${projectBasePath}/classifications`,
+                label: t("categories"),
+                icon: "heroicons:list-bullet-20-solid",
+                active: new RegExp(
+                  `^${projectBasePath}/classifications($|/.*)`,
+                ).test(pathname),
               },
             ],
           },
