@@ -15,6 +15,7 @@ interface ActionResponse {
   success: string;
   error: string;
   project?: Project;
+  apiKey?: string;
 }
 
 export async function checkUserPermissions(
@@ -442,4 +443,52 @@ export async function shareProject({
       error: "somethingWentWrong",
     };
   }
+}
+
+export async function getProjectApiKey(
+  projectId: string,
+): Promise<ActionResponse> {
+  const user = await currentUser();
+  if (!user) {
+    throw new Error("Unauthorized: User not authenticated");
+  }
+
+  let userPermissions;
+  let userIsAdmin;
+
+  try {
+    ({ userPermissions, userIsAdmin } = await checkUserPermissions(
+      projectId,
+      user.id,
+      user.role,
+    ));
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      return {
+        success: "",
+        error: error.message,
+      };
+    }
+    return {
+      success: "",
+      error: "somethingWentWrong",
+    };
+  }
+
+  const hasAccess = userIsAdmin || userPermissions?.includes("FULLACCESS");
+  if (!hasAccess) {
+    return { success: "", error: "unauthorized" };
+  }
+
+  const project = await db.project.findUnique({
+    where: { id: projectId },
+
+    select: { apiKey: true },
+  });
+
+  if (!project) {
+    throw new Error("Project not found");
+  }
+
+  return { apiKey: project.apiKey, error: "", success: "" };
 }

@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import { CategoriesClient } from "./_components/client";
 import { CategoriesProps } from "./_components/columns";
 import { getAllCategories } from "@/actions/categories";
+import { ApiList } from "@/components/shared/data-table/api-list";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -38,7 +39,6 @@ export default async function Classifications(props: ClassificationsProps) {
   ];
   try {
     const categories = await getAllCategories(projectId);
-
     const formattedCategories: CategoriesProps[] = Array.isArray(categories)
       ? categories.map((item) => ({
           id: item.id,
@@ -57,6 +57,7 @@ export default async function Classifications(props: ClassificationsProps) {
         <Card>
           <CategoriesClient data={formattedCategories} projectId={projectId} />
         </Card>
+        <ApiList entityName="categories" entityIdName="categoryId" />
       </div>
     );
   } catch (error) {
