@@ -46,6 +46,7 @@ model Project {
   ownerId      String        @db.ObjectId
   owner        User          @relation(fields: [ownerId], references: [id])
   userProjects UserProject[] @relation("UserProjects")
+  ProjectUser  ProjectUser[]
   Category     Categories[]
 
   createdAt DateTime @default(now())
@@ -80,4 +81,19 @@ model Categories {
   projectId String       @db.ObjectId
 
   @@map("categories")
+}
+
+model ProjectUser {
+  id           String    @id @default(auto()) @map("_id") @db.ObjectId
+  fullName     String?
+  phoneNumber  String    @unique
+  otpCode      String?
+  otpExpiresIn DateTime?
+  project      Project   @relation(fields: [projectId], references: [id])
+  projectId    String    @db.ObjectId
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("project_users")
 }

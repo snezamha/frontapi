@@ -2,11 +2,13 @@ import { NextRequest, NextResponse } from "next/server";
 
 import db from "@/server/db";
 
-export async function GET(request: NextRequest) {
-  const pathname = request.nextUrl.pathname;
-  const pathParts = pathname.split("/");
-  const projectId = pathParts[2];
-  const categoryId = pathParts[4];
+export async function GET(
+  req: NextRequest,
+  props: { params: Promise<{ projectId: string; categoryId: string }> },
+) {
+  const params = await props.params;
+  const projectId = params.projectId;
+  const categoryId = params.categoryId;
 
   try {
     if (!projectId) {

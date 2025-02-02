@@ -96,7 +96,6 @@ const CategoryFormWrapper: React.FC<CategoryFormProps> = ({ initData }) => {
     return groups;
   }, {} as Record<string, { value: string; label: string; parentId?: string | null; type: string }[]>);
   const handleSubmit = async (data: CategoryFormData) => {
-    console.log(data);
     try {
       const finalData = { ...data, projectId };
       const result = data.id

@@ -2,7 +2,6 @@
 import db from "@/server/db";
 import { currentUser } from "@/lib/auth";
 import { Project, UserProject } from "@prisma/client";
-import { convertToSlug } from "@/lib/utils";
 
 interface CheckPermissionsResult {
   project: Project & { userProjects: UserProject[] };
@@ -52,7 +51,7 @@ export async function checkUserPermissions(
   };
 }
 
-export async function getAllCategories(projectId: string) {
+export async function getAllUsers(projectId: string) {
   const user = await currentUser();
   if (!user) {
     return {
@@ -85,24 +84,24 @@ export async function getAllCategories(projectId: string) {
     return { success: "", error: "unauthorized" };
   }
   try {
-    const categories = await db.categories.findMany({
+    const users = await db.projectUser.findMany({
       where: {
         projectId,
       },
       include: {
-        parent: true,
+        project: true,
       },
     });
-    return categories.map((category) => ({
-      ...category,
+    return users.map((user) => ({
+      ...user,
     }));
   } catch (error) {
     console.error(error);
-    throw new Error("Failed to fetch categories");
+    throw new Error("Failed to fetch users");
   }
 }
 
-export async function getCategory(projectId: string, categoryId: string) {
+export async function getUserById(projectId: string, userId: string) {
   const user = await currentUser();
   if (!user) {
     return {
@@ -135,34 +134,32 @@ export async function getCategory(projectId: string, categoryId: string) {
     return { success: "", error: "unauthorized" };
   }
   try {
-    const category = await db.categories.findUnique({
+    const user = await db.projectUser.findUnique({
       where: {
-        id: categoryId,
+        id: userId,
         projectId,
       },
       include: {
-        parent: true,
+        project: true,
       },
     });
-    return category || null;
+    return user || null;
   } catch (error) {
     console.error(error);
-    throw new Error("Failed to fetch category");
+    throw new Error("Failed to fetch user");
   }
 }
 
-interface CategoryFormData {
+export interface UserFormData {
   id?: string;
-  title?: string;
-  slug?: string | null;
-  parentId?: string | null;
-  type: string;
+  fullName?: string | null;
+  phoneNumber: string;
+  otpCode?: string | null;
+  otpExpiresIn?: Date | null;
   projectId: string;
 }
 
-export async function createCategory(
-  data: CategoryFormData,
-): Promise<ActionResponse> {
+export async function createUser(data: UserFormData): Promise<ActionResponse> {
   const user = await currentUser();
   if (!user) {
     return {
@@ -197,18 +194,18 @@ export async function createCategory(
   }
 
   try {
-    await db.categories.create({
+    await db.projectUser.create({
       data: {
-        title: data.title?.trim() || "",
-        slug: convertToSlug(data.title?.trim() || ""),
-        parentId: data.parentId === "null" ? null : data.parentId,
-        type: data.type,
+        phoneNumber: data.phoneNumber,
+        fullName: data.fullName || null,
+        otpCode: null,
+        otpExpiresIn: null,
         projectId: data.projectId,
       },
     });
 
     return {
-      success: "categoryAddedSuccessfully",
+      success: "userAddedSuccessfully",
       error: "",
     };
   } catch (error: unknown) {
@@ -219,11 +216,9 @@ export async function createCategory(
   }
 }
 
-export async function updateCategory(
-  data: CategoryFormData,
-): Promise<ActionResponse> {
+export async function updateUser(data: UserFormData): Promise<ActionResponse> {
   if (!data.id) {
-    return { success: "", error: "categoryIdNotProvided" };
+    return { success: "", error: "userIdNotProvided" };
   }
 
   const user = await currentUser();
@@ -260,18 +255,19 @@ export async function updateCategory(
   }
 
   try {
-    await db.categories.update({
+    await db.projectUser.update({
       where: { id: data.id },
       data: {
-        title: data.title?.trim(),
-        slug: convertToSlug(data.title?.trim() || ""),
-        parentId: data.parentId === "null" ? null : data.parentId,
-        type: data.type,
+        phoneNumber: data.phoneNumber,
+        fullName: data.fullName || null,
+        otpCode: data.otpCode || null,
+        otpExpiresIn: data.otpExpiresIn || null,
+        projectId: data.projectId,
       },
     });
 
     return {
-      success: "categoryUpdatedSuccessfully",
+      success: "userUpdatedSuccessfully",
       error: "",
     };
   } catch (error: unknown) {
@@ -282,9 +278,9 @@ export async function updateCategory(
   }
 }
 
-export async function deleteCategory(
+export async function deleteUser(
   projectId: string,
-  categoryId: string,
+  userId: string,
 ): Promise<ActionResponse> {
   const user = await currentUser();
   if (!user) {
@@ -322,11 +318,11 @@ export async function deleteCategory(
   }
 
   try {
-    await db.categories.delete({
-      where: { id: categoryId },
+    await db.projectUser.delete({
+      where: { id: userId },
     });
     return {
-      success: "categoryDeletedSuccessfully",
+      success: "userDeletedSuccessfully",
       error: "",
     };
   } catch (error: unknown) {

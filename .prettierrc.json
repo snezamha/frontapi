@@ -3,5 +3,9 @@
   "singleQuote": false,
   "tabWidth": 2,
   "trailingComma": "all",
+  "printWidth": 80,
+  "arrowParens": "always",
+  "proseWrap": "always",
+  "quoteProps": "consistent",
   "tailwindConfig": "./tailwind.config.ts"
 }

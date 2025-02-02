@@ -6,7 +6,7 @@ import { Card } from "@/components/ui/card";
 import { CategoriesClient } from "./_components/client";
 import { CategoriesProps } from "./_components/columns";
 import { getAllCategories } from "@/actions/categories";
-import { ApiList } from "@/components/shared/data-table/api-list";
+import ClassificationsApiDocs from "./_components/ClassificationApiDocs";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -38,26 +38,27 @@ export default async function Classifications(props: ClassificationsProps) {
     { title: t("classifications"), link: `/${projectId}/classifications` },
   ];
   try {
-    const categories = await getAllCategories(projectId);
-    const formattedCategories: CategoriesProps[] = Array.isArray(categories)
-      ? categories.map((item) => ({
-          id: item.id,
-          title: item.title,
-          slug: item.slug,
-          type: item.type,
-          parentName: categories.find(
-            (category) => category.id === item.parentId,
-          )?.title,
-          projectId: item.projectId,
-        }))
-      : [];
+    const response = await getAllCategories(projectId);
+    if (!Array.isArray(response)) {
+      throw new Error("Invalid response from getAllUsers");
+    }
+    const formattedCategories: CategoriesProps[] = response.map((item) => ({
+      id: item.id,
+      title: item.title,
+      slug: item.slug,
+      type: item.type,
+      parentName: response.find((category) => category.id === item.parentId)
+        ?.title,
+      projectId: item.projectId,
+    }));
+
     return (
       <div>
         <Breadcrumbs items={breadcrumbItems} />
         <Card>
           <CategoriesClient data={formattedCategories} projectId={projectId} />
         </Card>
-        <ApiList entityName="categories" entityIdName="categoryId" />
+        <ClassificationsApiDocs />
       </div>
     );
   } catch (error) {

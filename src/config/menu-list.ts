@@ -68,6 +68,14 @@ export function getMenuList(
                   `^${projectBasePath}/classifications($|/.*)`,
                 ).test(pathname),
               },
+              {
+                href: `${projectBasePath}/users`,
+                label: t("users"),
+                icon: "heroicons:users",
+                active: new RegExp(`^${projectBasePath}/users($|/.*)`).test(
+                  pathname,
+                ),
+              },
             ],
           },
         ]

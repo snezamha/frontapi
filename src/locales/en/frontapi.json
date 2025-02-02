@@ -36,7 +36,8 @@
     "projects": "Projects",
     "dashboard": "Dashboard",
     "modules": "Modules",
-    "categories": "Categories"
+    "categories": "Categories",
+    "users": "Users"
   },
   "breadcrumb": {
     "dashboard": "Dashboard",
@@ -49,7 +50,10 @@
     "dashboardTitle": "{title}'s dashboard",
     "classifications": "Classifications",
     "addClassification": "Add Classification",
-    "editClassification": "Edit Classification"
+    "editClassification": "Edit Classification",
+    "users": "Users",
+    "addUser": "Add User",
+    "editUser": "Edit User"
   },
   "profileInfo": {
     "home": "Home",
@@ -171,6 +175,27 @@
     "typeRequired": "Type is required",
     "unknownGroupLabel": "Unknown group",
     "withoutParentCategory": "Without parent category"
+  },
+  "users": {
+    "actions": "Actions",
+    "addUser": "Add user",
+    "createdAt": "Created at",
+    "editUser": "Edit user",
+    "enterFullName": "Enter full name",
+    "enterPhoneNumber": "Enter phone number",
+    "fullName": "Full name",
+    "phoneNumber": "Phone number",
+    "phoneNumberInvalid": "Phone number is invalid",
+    "phoneNumberLength": "Phone number must be 11 digits long",
+    "user": "User",
+    "userAddedSuccessfully": "User added successfully",
+    "userDeleted": "User deleted",
+    "userDeletedError": "User deleted error",
+    "userDeletedSuccessfully": "User deleted successfully",
+    "userExists": "User already exists with this phone number",
+    "userUpdatedSuccessfully": "User updated successfully",
+    "users": "Users",
+    "unauthorized": "Unauthorized"
   },
   "footer": {
     "copyRight": "CopyRight © {year} by FrontAPI،, All rights reserved."

@@ -1,4 +1,4 @@
 {
   "cSpell.words": ["FULLACCESS"],
-  "conventionalCommits.scopes": ["Categories"]
+  "conventionalCommits.scopes": ["Categories", "Users"]
 }

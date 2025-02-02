@@ -36,7 +36,8 @@
     "projects": "پروژه‌ها",
     "dashboard": "داشبورد",
     "modules": "ماژول‌ها",
-    "categories": "دسته‌بندی‌ها"
+    "categories": "دسته‌بندی‌ها",
+    "users": "کاربران"
   },
   "breadcrumb": {
     "dashboard": "داشبورد",
@@ -49,7 +50,10 @@
     "dashboardTitle": "داشبورد {title}",
     "classifications": "دسته‌بندی‌ها",
     "addClassification": "افزودن دسته‌بندی",
-    "editClassification": "ویرایش دسته‌بندی"
+    "editClassification": "ویرایش دسته‌بندی",
+    "users": "کاربران",
+    "addUser": "افزودن کاربر",
+    "editUser": "ویرایش کاربر"
   },
   "profileInfo": {
     "home": "خانه",
@@ -171,6 +175,27 @@
     "typeRequired": "نوع الزامی است",
     "unknownGroupLabel": "گروه ناشناخته",
     "withoutParentCategory": "بدون دسته‌بندی والد"
+  },
+  "users": {
+    "actions": "عملیات",
+    "addUser": "افزودن کاربر",
+    "createdAt": "ایجاد شده در",
+    "editUser": "ویرایش کاربر",
+    "enterFullName": "وارد کردن نام کامل",
+    "enterPhoneNumber": "وارد کردن شماره تلفن",
+    "fullName": "نام کامل",
+    "phoneNumber": "شماره تلفن‌",
+    "phoneNumberInvalid": "شماره تلفن نامعتبر است",
+    "phoneNumberLength": "شماره تلفن باید 11 رقم باشد",
+    "user": "کاربر",
+    "userAddedSuccessfully": "کاربر با موفقیت اضافه شد",
+    "userDeleted": "کاربر حذف شد",
+    "userDeletedError": "خطا در حذف کاربر",
+    "userDeletedSuccessfully": "کاربر با موفقیت حذف شد",
+    "userExists": "کاربری با این شماره تلفن از قبل وجود دارد",
+    "userUpdatedSuccessfully": "کاربر با موفقیت به‌روزرسانی شد",
+    "users": "کاربران",
+    "unauthorized": "دسترسی غیرمجاز"
   },
   "footer": {
     "copyRight": "کپی رایت © {year} توسط FrontAPI، تمامی حقوق مطالب محفوظ است."

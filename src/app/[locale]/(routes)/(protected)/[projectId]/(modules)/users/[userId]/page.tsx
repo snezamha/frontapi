@@ -1,10 +1,10 @@
 import { Card } from "@/components/ui/card";
-import CategoryFormWrapper from "../_components/CategoryFormWrapper";
 import { getMessages, getTranslations } from "next-intl/server";
 import { createTranslator } from "next-intl";
-import { Categories } from "@prisma/client";
+import { ProjectUser } from "@prisma/client";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
-import { getCategory } from "@/actions/categories";
+import UserFormWrapper from "../_components/UserFormWrapper";
+import { getUserById } from "@/actions/users";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -16,36 +16,36 @@ export async function generateMetadata(props: Props) {
   const messages = await getMessages();
   const t = createTranslator({ locale, messages });
   return {
-    title: t("breadcrumb.editClassification"),
+    title: t("breadcrumb.users"),
   };
 }
 
-interface ClassificationsProps {
-  params: Promise<{ projectId: string; categoryId: string }>;
+interface UsersPageProps {
+  params: Promise<{ projectId: string; userId: string }>;
 }
 
-export default async function ClassificationPage(props: ClassificationsProps) {
+export default async function UsersPage(props: UsersPageProps) {
   const params = await props.params;
   const { projectId } = params;
-  const categoryId = params.categoryId;
-  const category = (await getCategory(projectId, categoryId)) as Categories;
+  const userId = params.userId;
+  const user = (await getUserById(projectId, userId)) as ProjectUser;
   const t = await getTranslations("breadcrumb");
   const breadcrumbItems = [
     {
       title: t("dashboard"),
       link: `/${projectId}/dashboard`,
     },
-    { title: t("classifications"), link: `/${projectId}/classifications` },
+    { title: t("users"), link: `/${projectId}/users` },
     {
-      title: t("editClassification"),
-      link: `/${projectId}/classifications/${projectId}`,
+      title: t("editUser"),
+      link: `/${projectId}/users/${projectId}`,
     },
   ];
   return (
     <div>
       <Breadcrumbs items={breadcrumbItems} />
       <Card>
-        <CategoryFormWrapper initData={category} />
+        <UserFormWrapper initData={user} />
       </Card>
     </div>
   );
