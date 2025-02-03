@@ -79,6 +79,7 @@ model Categories {
   children  Categories[] @relation("CategoryToCategory")
   project   Project      @relation(fields: [projectId], references: [id])
   projectId String       @db.ObjectId
+  Product   Product[]
 
   @@map("categories")
 }
@@ -96,4 +97,36 @@ model ProjectUser {
   updatedAt DateTime @updatedAt
 
   @@map("project_users")
+}
+
+model Product {
+  id                 String     @id @default(auto()) @map("_id") @db.ObjectId
+  categoryId         String     @db.ObjectId
+  category           Categories @relation(fields: [categoryId], references: [id])
+  title              String     @unique
+  slug               String?    @unique
+  description        String?
+  colors             String[]
+  sizes              String[]
+  featured           Boolean?   @default(false)
+  status             Boolean    @default(true)
+  price              Float
+  discountPercent    Float?
+  countInStock       Int
+  lowStockQtyWarning Int?
+  stockVisibility    Boolean?   @default(false)
+  refundable         Boolean?   @default(false)
+  images             Json?
+  attachments        Json?
+  isInAuction        Boolean?   @default(false)
+  auctionIds         String[]   @db.ObjectId
+  basePrice          Float?
+  priceStep          Float?
+  seoMetaTitle       String?
+  seoMetaDescription String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("products")
 }

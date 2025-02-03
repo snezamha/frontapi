@@ -56,7 +56,7 @@ export function AuthComponent() {
   };
 
   return (
-    <Card className="shadow-lg my-5 ">
+    <Card className="my-5 shadow-lg ">
       <CardHeader className="space-y-1">
         <CardTitle className="text-2xl">{t("authentication")}</CardTitle>
         <CardDescription>{t("description")}</CardDescription>
@@ -71,10 +71,10 @@ export function AuthComponent() {
             {isLoadingGitHub ? (
               <Icon
                 icon="octicon:mark-github-24"
-                className="h-4 w-4 animate-spin"
+                className="w-4 h-4 animate-spin"
               />
             ) : (
-              <Icon icon="octicon:mark-github-24" className="h-4 w-4" />
+              <Icon icon="octicon:mark-github-24" className="w-4 h-4" />
             )}
             {t("github")}
           </Button>
@@ -86,10 +86,10 @@ export function AuthComponent() {
             {isLoadingGoogle ? (
               <Icon
                 icon="entypo-social:google"
-                className="h-4 w-4 animate-spin"
+                className="w-4 h-4 animate-spin"
               />
             ) : (
-              <Icon icon="entypo-social:google" className="h-4 w-4" />
+              <Icon icon="entypo-social:google" className="w-4 h-4" />
             )}
             {t("google")}
           </Button>

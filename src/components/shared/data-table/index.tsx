@@ -68,15 +68,15 @@ export function DataTable<TData, TValue>({
 
   return (
     <>
-      <div className="flex flex-col gap-4 sm:flex-row items-center py-4 px-5">
-        <div className="flex-none text-start text-xl font-medium text-default-900 order-1 sm:order-none">
+      <div className="flex flex-col items-center gap-4 px-5 py-4 sm:flex-row">
+        <div className="flex-none order-1 text-xl font-medium text-start text-default-900 sm:order-none">
           {name}{" "}
           <span className="text-xs">
             ({data.length} {t("row")})
           </span>
         </div>
 
-        <div className="flex flex-col sm:flex-row flex-1 w-full sm:w-auto justify-between gap-4 order-2 sm:order-none">
+        <div className="flex flex-col justify-between flex-1 order-2 w-full gap-4 sm:flex-row sm:w-auto sm:order-none">
           <Input
             placeholder={`${t("search")} ...`}
             value={globalFilter}
@@ -87,9 +87,9 @@ export function DataTable<TData, TValue>({
           {addNewLink && (
             <Link
               href={addNewLink}
-              className="flex gap-2 items-center text-sm bg-primary text-secondary py-2 px-3 rounded-sm hover:bg-primary/90 sm:w-auto w-full justify-center"
+              className="flex items-center justify-center w-full gap-2 px-3 py-2 text-sm rounded-sm bg-primary text-secondary hover:bg-primary/90 sm:w-auto"
             >
-              <Plus className="h-4 w-4" />
+              <Plus className="w-4 h-4" />
               <span className="px-2">{t("addNew")}</span>
             </Link>
           )}
@@ -155,8 +155,8 @@ export function DataTable<TData, TValue>({
 
       <div className="flex items-center justify-center gap-2 py-4">
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between sm:py-4 sm:px-10">
-          <div className="text-sm text-muted-foreground text-center"></div>
-          <div className="flex items-center gap-2 flex-wrap justify-center">
+          <div className="text-sm text-center text-muted-foreground"></div>
+          <div className="flex flex-wrap items-center justify-center gap-2">
             <Button
               variant="outline"
               size="sm"

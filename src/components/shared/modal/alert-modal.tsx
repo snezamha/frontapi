@@ -43,7 +43,7 @@ const AlertModal = ({
       isOpen={isOpen}
       onClose={onClose}
     >
-      <div className="pt-6 space-x-2 rtl:space-x-reverse flex items-center justify-end w-full ">
+      <div className="flex items-center justify-end w-full pt-6 space-x-2 rtl:space-x-reverse ">
         <Button disabled={loading} variant={"outline"} onClick={onClose}>
           {t("cancel")}
         </Button>
@@ -58,7 +58,7 @@ const AlertModal = ({
           }
         >
           {isPending ? "" : t("continue")}
-          {isPending && <Loader2 className="mx-2 h-4 w-4 animate-spin" />}
+          {isPending && <Loader2 className="w-4 h-4 mx-2 animate-spin" />}
         </Button>
       </div>
     </Modal>

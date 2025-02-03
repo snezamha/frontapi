@@ -67,7 +67,7 @@ const ProfileForm = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-8">
         <FormField
           control={form.control}
           name="name"
@@ -90,7 +90,7 @@ const ProfileForm = () => {
             {formState.isSubmitting || pending ? (
               <>
                 <span className="rounded-full animate-spin">
-                  <Loader className="h-5 w-5" />
+                  <Loader className="w-5 h-5" />
                 </span>
                 {t("updating")} ...
               </>

@@ -85,7 +85,7 @@ export const CellAction = ({
             variant="ghost"
             className="h-8 w-8 p-0 data-[state=open]:bg-muted"
           >
-            <Ellipsis className="h-4 w-4" />
+            <Ellipsis className="w-4 h-4" />
             <span className="sr-only">Open menu</span>
           </Button>
         </DropdownMenuTrigger>

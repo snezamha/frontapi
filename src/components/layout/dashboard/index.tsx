@@ -18,7 +18,7 @@ export default async function DashboardPanelLayout({
   return (
     <SidebarProvider>
       <div className="grid min-h-screen w-full lg:grid-cols-[17.5rem_1fr]">
-        <DashboardSidebar className="top-0 z-30 hidden flex-col gap-4 ltr:border-r rtl:border-l border-border/60 lg:sticky lg:block">
+        <DashboardSidebar className="top-0 z-30 flex-col hidden gap-4 ltr:border-r rtl:border-l border-border/60 lg:sticky lg:block">
           <ProjectSwitcher items={projects} />
         </DashboardSidebar>
         <div className="flex flex-col">
@@ -31,7 +31,7 @@ export default async function DashboardPanelLayout({
               </DashboardSidebarSheet>
             </DashboardHeader>
           )}
-          <main className="flex-1 overflow-hidden px-6 pt-6 bg-slate-100 dark:bg-slate-900">
+          <main className="flex-1 px-6 pt-6 overflow-hidden bg-slate-100 dark:bg-slate-900">
             {children}
           </main>
         </div>

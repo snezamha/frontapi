@@ -34,7 +34,7 @@ const ProfileInfo = ({ user }: NavbarProps) => {
           </div>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56 p-0" align="end">
-          <DropdownMenuLabel className="flex gap-2 items-center mb-1 p-3">
+          <DropdownMenuLabel className="flex items-center gap-2 p-3 mb-1">
             <UserAvatar
               user={{
                 name: user.name || null,
@@ -43,7 +43,7 @@ const ProfileInfo = ({ user }: NavbarProps) => {
             />
 
             <div>
-              <div className="text-sm font-medium text-default-800 capitalize">
+              <div className="text-sm font-medium capitalize text-default-800">
                 {user.name || null}
               </div>
               <span className="text-xs text-default-600 hover:text-primary">
@@ -83,7 +83,7 @@ const ProfileInfo = ({ user }: NavbarProps) => {
           </DropdownMenuGroup>
           <DropdownMenuSeparator />
           <DropdownMenuItem
-            className="flex items-center gap-2 text-sm font-medium text-default-600 capitalize my-1 px-3 cursor-pointer"
+            className="flex items-center gap-2 px-3 my-1 text-sm font-medium capitalize cursor-pointer text-default-600"
             onSelect={(event) => {
               event.preventDefault();
               signOut({

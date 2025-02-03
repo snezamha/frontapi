@@ -42,7 +42,7 @@ export function UserAvatar({
         {user.picture ? (
           status === "loading" ? (
             <div
-              className="flex w-full h-full items-center justify-center"
+              className="flex items-center justify-center w-full h-full"
               aria-label="Loading avatar"
             >
               <Loader
@@ -53,7 +53,7 @@ export function UserAvatar({
             <AvatarImage alt={`${user.name}'s avatar`} src={user.picture} />
           )
         ) : (
-          <AvatarFallback className="flex w-full h-full items-center justify-center">
+          <AvatarFallback className="flex items-center justify-center w-full h-full">
             <CircleUserRound className={iconClass} />
           </AvatarFallback>
         )}

@@ -42,9 +42,9 @@ export default function LocalSwitcher() {
       <DropdownMenuTrigger asChild>
         <Button size="icon" variant="outline">
           {isPending ? (
-            <Loader className="h-5 w-5 animate-spin" />
+            <Loader className="w-5 h-5 animate-spin" />
           ) : (
-            <LanguagesIcon className="h-5 w-5" />
+            <LanguagesIcon className="w-5 h-5" />
           )}
         </Button>
       </DropdownMenuTrigger>
@@ -61,7 +61,7 @@ export default function LocalSwitcher() {
             />
             <span className="mx-1">{locale.name}</span>
             {locale.value === localActive ? (
-              <CheckIcon className="h-5 w-5 me-auto" />
+              <CheckIcon className="w-5 h-5 me-auto" />
             ) : null}
           </DropdownMenuItem>
         ))}

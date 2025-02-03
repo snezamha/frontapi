@@ -8,7 +8,7 @@ export default function NotFound() {
   const router = useRouter();
   const t = useTranslations("error");
   return (
-    <div className="absolute left-1/2 top-1/2 mb-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center text-center">
+    <div className="absolute items-center justify-center mb-16 text-center -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
       <span className="text-[10rem] font-extrabold leading-none">404</span>
       <div className="flex items-center justify-center mb-5">
         <svg
@@ -37,11 +37,11 @@ export default function NotFound() {
           ></polygon>
         </svg>
       </div>
-      <h2 className="font-heading my-2 text-2xl font-bold">
+      <h2 className="my-2 text-2xl font-bold font-heading">
         {t("somethingWentWrong")}
       </h2>
       <p>{t("pageNotFound")}</p>
-      <div className="mt-8 flex justify-center gap-2">
+      <div className="flex justify-center gap-2 mt-8">
         <Button onClick={() => router.back()} variant="default" size="lg">
           {t("goBack")}
         </Button>

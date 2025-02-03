@@ -89,7 +89,7 @@ export const ApiList: React.FC<ApiListProps> = ({
                 type={showApiKey ? "text" : "password"}
                 value={apiKey}
                 readOnly
-                className="flex-1 px-4 py-2 border rounded-lg font-mono text-sm bg-gray-100"
+                className="flex-1 px-4 py-2 font-mono text-sm bg-gray-100 border rounded-lg"
               />
               <Button
                 variant="secondary"
@@ -120,11 +120,11 @@ export const ApiList: React.FC<ApiListProps> = ({
             <CardContent>
               {category.endpoints.map((endpoint, idx) => (
                 <div key={idx} className="space-y-4">
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 w-full">
+                  <div className="flex flex-col w-full gap-2 sm:flex-row sm:items-center">
                     <Badge variant="default" className="w-max">
                       CRUD
                     </Badge>
-                    <p className="font-mono text-sm break-all w-full sm:w-auto">
+                    <p className="w-full font-mono text-sm break-all sm:w-auto">
                       {endpoint.path}
                     </p>
                     <Button
@@ -141,7 +141,7 @@ export const ApiList: React.FC<ApiListProps> = ({
                   <ul className="space-y-4">
                     {endpoint.methods.map((method, index) => (
                       <li key={index} className="space-y-2">
-                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 w-full">
+                        <div className="flex flex-col w-full gap-2 sm:flex-row sm:items-center">
                           <Badge
                             variant={
                               method.name === "GET"
@@ -159,7 +159,7 @@ export const ApiList: React.FC<ApiListProps> = ({
                           </p>
                         </div>
                         {method.parameters && method.parameters.length > 0 && (
-                          <ul className="ml-4 list-disc list-inside space-y-1">
+                          <ul className="ml-4 space-y-1 list-disc list-inside">
                             {method.parameters.map((param) => (
                               <li key={param.name} className="text-sm">
                                 <span className="font-mono font-medium">
@@ -181,15 +181,21 @@ export const ApiList: React.FC<ApiListProps> = ({
                               Show Example
                             </Button>
                           </DialogTrigger>
-                          <DialogContent className="max-w-[700px]">
+                          <DialogContent
+                            className="max-w-[700px]"
+                            style={{ direction: "ltr" }}
+                          >
                             <DialogHeader>
                               <DialogTitle>{method.name} Example</DialogTitle>
                               <DialogDescription>
                                 A curl example for {method.name} request method.
                               </DialogDescription>
                             </DialogHeader>
-                            <ScrollArea className="bg-muted p-2 rounded-md text-sm max-w-full min-w-0">
-                              <pre className="whitespace-pre-wrap break-words">
+                            <ScrollArea
+                              className="max-w-full min-w-0 p-2 text-sm rounded-md bg-muted"
+                              style={{ direction: "ltr" }}
+                            >
+                              <pre className="break-words whitespace-pre-wrap">
                                 {method.example}
                               </pre>
                             </ScrollArea>

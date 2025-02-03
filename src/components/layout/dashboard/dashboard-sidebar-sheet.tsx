@@ -57,7 +57,7 @@ export function DashboardSidebarSheet({
           <SheetHeader>
             <SheetTitle></SheetTitle>
             <SheetDescription></SheetDescription>
-            <Link href="/" className="flex gap-2 items-center">
+            <Link href="/" className="flex items-center gap-2">
               <Button variant="outline" size="icon">
                 <Logo className="h-8 w-8 text-default-900 [&>path:nth-child(2)]:text-background [&>path:nth-child(3)]:text-background" />
               </Button>

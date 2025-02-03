@@ -32,13 +32,13 @@ export const FileUpload = ({
   return (
     <>
       {value ? (
-        <div className="pb-5 flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-4 pb-5">
           {value.map((item, index) => (
             <div
               key={`${item.key}-${index}`}
               className="relative h-[200px] w-[200px] rounded-md overflow-hidden bg-gray-50 border border-gray-200 dark:bg-zinc-800"
             >
-              <div className="absolute right-2 top-2 z-10">
+              <div className="absolute z-10 right-2 top-2">
                 <Button
                   type="button"
                   onClick={async () => {
@@ -49,7 +49,7 @@ export const FileUpload = ({
                   variant="default"
                   size="icon"
                 >
-                  <Trash className="h-4 w-4" />
+                  <Trash className="w-4 h-4" />
                 </Button>
               </div>
 
@@ -64,9 +64,9 @@ export const FileUpload = ({
                 />
               ) : (
                 <div className="flex flex-col items-center justify-center h-full p-4 text-center">
-                  <File className="h-8 w-8 text-gray-500 mb-2" />
+                  <File className="w-8 h-8 mb-2 text-gray-500" />
                   {item.name && (
-                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300 break-all">
+                    <span className="text-sm font-medium text-gray-700 break-all dark:text-gray-300">
                       {item.name}
                     </span>
                   )}
@@ -87,7 +87,7 @@ export const FileUpload = ({
         </div>
       ) : null}
       <UploadDropzone<OurFileRouter, "imageUploader" | "pdfUploader">
-        className="ut-label:text-sm ut-allowed-content:ut-uploading:text-red-300 py-2 dark:bg-zinc-800"
+        className="py-2 ut-label:text-sm ut-allowed-content:ut-uploading:text-red-300 dark:bg-zinc-800"
         endpoint={endpoint}
         config={{ mode: "auto" }}
         onClientUploadComplete={(res?: UploadFileResponse[]) => {

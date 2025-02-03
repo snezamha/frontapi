@@ -26,12 +26,12 @@ export function DashboardSidebar({
       {...props}
     >
       <header className="hidden h-[3.55rem] items-center gap-4 border-b border-border/60 px-4 py-2 lg:flex lg:px-6">
-        <div className="flex flex-1 items-center justify-center">
-          <Link href="/" className="flex gap-2 items-center">
+        <div className="flex items-center justify-center flex-1">
+          <Link href="/" className="flex items-center gap-2">
             <Button variant="outline" size="icon">
               <Logo className="h-8 w-8 text-default-900 [&>path:nth-child(2)]:text-background [&>path:nth-child(3)]:text-background" />
             </Button>
-            <h1 className="lg:block hidden text-xl font-semibold text-default-900">
+            <h1 className="hidden text-xl font-semibold lg:block text-default-900">
               {t("title")}
             </h1>
           </Link>

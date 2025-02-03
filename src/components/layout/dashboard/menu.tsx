@@ -31,8 +31,8 @@ export function Menu() {
 
   return (
     <ScrollArea className="h-[calc(100vh-8rem)] px-2" dir={direction}>
-      <nav className="flex w-full flex-col">
-        <ul className="items-start space-y-1 px-4">
+      <nav className="flex flex-col w-full">
+        <ul className="items-start px-4 space-y-1">
           {menuList.map(({ groupLabel, menus }, index) => (
             <li className={cn("w-full", groupLabel ? "pt-5" : "")} key={index}>
               {groupLabel ? (
@@ -43,8 +43,8 @@ export function Menu() {
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger className="w-full">
-                      <div className="w-full flex justify-center items-center">
-                        <Ellipsis className="h-5 w-5" />
+                      <div className="flex items-center justify-center w-full">
+                        <Ellipsis className="w-5 h-5" />
                       </div>
                     </TooltipTrigger>
                     <TooltipContent side="right">
@@ -72,7 +72,7 @@ export function Menu() {
                             onClick={() => {
                               if (!isDesktop) setOpen(false);
                             }}
-                            className="w-full justify-start h-10 mb-1"
+                            className="justify-start w-full h-10 mb-1"
                             asChild
                           >
                             <Link href={href}>

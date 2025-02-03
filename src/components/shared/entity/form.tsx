@@ -179,8 +179,8 @@ export const EntityAdminForm = <T extends Record<string, unknown>>({
   };
   return (
     <>
-      <CardHeader className="border-0 border-b border-default-200 border-solid">
-        <CardTitle className="text-default-900 font-medium">
+      <CardHeader className="border-0 border-b border-solid border-default-200">
+        <CardTitle className="font-medium text-default-900">
           <div className="flex items-center justify-between">
             {title}
             {onDelete && initData && (
@@ -222,11 +222,11 @@ export const EntityAdminForm = <T extends Record<string, unknown>>({
             >
               <form
                 onSubmit={form.handleSubmit(handleFinalSubmit)}
-                className="space-y-8 w-full"
+                className="w-full space-y-8"
               >
                 <div className={sections[currentStep].sectionClassName}>
                   {section.sectionTitle && (
-                    <h2 className="col-span-full text-lg font-semibold text-gray-700">
+                    <h2 className="text-lg font-semibold text-gray-700 col-span-full">
                       {t(section.sectionTitle)}
                     </h2>
                   )}
@@ -254,7 +254,7 @@ export const EntityAdminForm = <T extends Record<string, unknown>>({
                       {formState.isSubmitting ? (
                         <>
                           <span className="rounded-full animate-spin">
-                            <Loader className="h-5 w-5" />
+                            <Loader className="w-5 h-5" />
                           </span>
                           {tEntityForm("applying")}
                         </>

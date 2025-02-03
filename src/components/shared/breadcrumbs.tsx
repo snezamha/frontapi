@@ -18,13 +18,13 @@ type BreadcrumbItemProps = {
 export function Breadcrumbs({ items }: { items: BreadcrumbItemProps[] }) {
   const locale = useLocale();
   return (
-    <div className="flex justify-between gap-3 items-center mb-6">
+    <div className="flex items-center justify-between gap-3 mb-6">
       <div className="flex-1">
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
               <Link href="/">
-                <HomeIcon className="h-5 w-5" />
+                <HomeIcon className="w-5 h-5" />
               </Link>
             </BreadcrumbItem>
             <BreadcrumbSeparator>

@@ -176,7 +176,7 @@ const ShareProjectForm: React.FC<ShareProjectModalProps> = ({ projectId }) => {
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <div className="px-4 py-4">
           {loadingShares ? (
-            <div className="flex w-full h-36 justify-center items-center">
+            <div className="flex items-center justify-center w-full h-36">
               <Loading />
             </div>
           ) : (
@@ -343,7 +343,7 @@ const ShareProjectForm: React.FC<ShareProjectModalProps> = ({ projectId }) => {
             {t("addUser")}
           </Button>
 
-          <div className="flex w-full justify-between pt-5">
+          <div className="flex justify-between w-full pt-5">
             <Button disabled={loading} type="submit">
               {t("save")}
             </Button>

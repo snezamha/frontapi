@@ -92,7 +92,7 @@ export function DateTimePicker({
               !date && "text-muted-foreground",
             )}
           >
-            <CalendarIcon className="mr-2 rtl:ml-2 h-4 w-4" />
+            <CalendarIcon className="w-4 h-4 mr-2 rtl:ml-2" />
             {date ? `${formattedDate} ${formattedTime}` : t(placeholder ?? "")}
           </Button>
         </PopoverTrigger>

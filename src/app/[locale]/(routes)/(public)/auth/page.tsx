@@ -24,7 +24,7 @@ const Auth = async () => {
     return redirect("/");
   }
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex items-center justify-center">
       <AuthComponent />
     </div>
   );

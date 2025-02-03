@@ -10,7 +10,7 @@ export default function Footer() {
     <footer className="w-full border-t bg-background">
       <section className="flex items-center">
         <div className="container py-2">
-          <div className="flex flex-col md:flex-row items-center justify-between text-gray-500 dark:text-gray-400">
+          <div className="flex flex-col items-center justify-between text-gray-500 md:flex-row dark:text-gray-400">
             <div className="text-xs text-center">
               {t("copyRight", { year: currentYear })}
             </div>
@@ -18,9 +18,9 @@ export default function Footer() {
               href="https://github.com/snezamha/frontapi"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center text-xs hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
+              className="flex items-center text-xs transition-colors hover:text-gray-700 dark:hover:text-gray-300"
             >
-              <Icon icon="octicon:mark-github-24" className="h-4 w-4 mx-2" />
+              <Icon icon="octicon:mark-github-24" className="w-4 h-4 mx-2" />
             </a>
           </div>
         </div>

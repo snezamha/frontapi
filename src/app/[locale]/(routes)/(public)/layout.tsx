@@ -16,18 +16,18 @@ const RoutesLayout = async ({ children }: { children: React.ReactNode }) => {
   const t = await getTranslations("rootLayout");
 
   return (
-    <div className="relative flex min-h-screen flex-col">
+    <div className="relative flex flex-col min-h-screen">
       <header className="sticky top-0 z-50 w-full border-b bg-background">
-        <div className="flex h-14 items-center px-6">
-          <Link href="/" className="flex gap-2 items-center">
+        <div className="flex items-center px-6 h-14">
+          <Link href="/" className="flex items-center gap-2">
             <Button variant="outline" size="icon">
               <Logo className="h-8 w-8 text-default-900 [&>path:nth-child(2)]:text-background [&>path:nth-child(3)]:text-background" />
             </Button>
-            <h1 className="lg:block hidden text-xl font-semibold text-default-900">
+            <h1 className="hidden text-xl font-semibold lg:block text-default-900">
               {t("title")}
             </h1>
           </Link>
-          <div className="flex flex-1 items-center justify-end space-x-2">
+          <div className="flex items-center justify-end flex-1 space-x-2">
             <nav className="flex items-center gap-2">
               {session ? (
                 <ProfileInfo
@@ -40,7 +40,7 @@ const RoutesLayout = async ({ children }: { children: React.ReactNode }) => {
               ) : (
                 <Link href="/auth">
                   <Button size="icon" variant="outline">
-                    <UserCircle className="h-5 w-5" />
+                    <UserCircle className="w-5 h-5" />
                   </Button>
                 </Link>
               )}
