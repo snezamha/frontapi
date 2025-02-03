@@ -26,6 +26,7 @@ import { Input } from "@/components/ui/input";
 import { Icon } from "@/components/shared/icon";
 import { Loading } from "@/components/shared/loading";
 import { useRouter } from "next/navigation";
+import { CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const useFetchData = <T,>(
   fetchFunction: () => Promise<T[]>,
@@ -172,194 +173,208 @@ const ShareProjectForm: React.FC<ShareProjectModalProps> = ({ projectId }) => {
   };
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="px-4 py-4">
-          {loadingShares ? (
-            <div className="flex items-center justify-center w-full h-36">
-              <Loading />
-            </div>
-          ) : (
-            <>
-              {fields.map((field, index) => {
-                const selectedUserIdsInOtherRows = fields
-                  .filter((_, i) => i !== index)
-                  .map((item) => item.userId)
-                  .filter(Boolean);
-                const blockedUserIdsSet = new Set(selectedUserIdsInOtherRows);
-                const userOptionsForRow: Option[] = allUsers
-                  .filter((user) => {
-                    if (
-                      blockedUserIdsSet.has(user.id) &&
-                      user.id !== field.userId
-                    ) {
-                      return false;
-                    }
-                    return true;
-                  })
-                  .map((user) => ({
-                    value: user.id,
-                    label: user.email + (user.name ? ` - ${user.name}` : ""),
-                  }));
-                return (
-                  <div
-                    key={field.id}
-                    className={`${
-                      field.userId === ownerId ? "hidden" : "block"
-                    } mb-6 flex flex-col gap-4 rounded-md border border-gray-200 p-4 `}
-                  >
-                    <FormField
-                      control={control}
-                      name="projectId"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormControl>
-                            <Input type="hidden" value={field.value} />
-                          </FormControl>
-                        </FormItem>
-                      )}
-                    />
-
-                    <div className="flex flex-col gap-4 md:flex-row">
-                      <FormField
-                        control={control}
-                        name={`items.${index}.userId`}
-                        render={({ field: userField }) => (
-                          <FormItem className="w-full">
-                            <FormLabel>{t("user")}</FormLabel>
-                            <FormControl>
-                              <ReactSelect
-                                isLoading={loadingUsers}
-                                isDisabled={disabledUsers}
-                                options={userOptionsForRow}
-                                onChange={(
-                                  selectedOption: SingleValue<Option>,
-                                ) =>
-                                  userField.onChange(
-                                    selectedOption?.value || "",
-                                  )
-                                }
-                                value={
-                                  userOptionsForRow.find(
-                                    (option) =>
-                                      option.value === userField.value,
-                                  ) || null
-                                }
-                                placeholder={t("searchUser")}
-                                isSearchable
-                                noOptionsMessage={() => t("noOptionFound")}
-                              />
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-
-                    <div className="flex flex-col">
-                      <FormField
-                        control={control}
-                        name={`items.${index}.permissions`}
-                        render={({ field: permsField }) => (
-                          <FormItem>
-                            <FormLabel>{t("permissions")}</FormLabel>
-                            <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
-                              {ALL_PERMISSIONS.filter((perm) =>
-                                permsField.value?.includes("FULLACCESS")
-                                  ? perm === "FULLACCESS"
-                                  : true,
-                              ).map((perm) => {
-                                const checked =
-                                  permsField.value?.includes(perm);
-                                return (
-                                  <div
-                                    key={perm}
-                                    className="flex items-center gap-2"
-                                  >
-                                    <Checkbox
-                                      checked={checked}
-                                      onCheckedChange={(isChecked) => {
-                                        if (perm === "FULLACCESS") {
-                                          if (isChecked) {
-                                            permsField.onChange(["FULLACCESS"]);
-                                          } else {
-                                            permsField.onChange(
-                                              permsField.value.filter(
-                                                (p: string) =>
-                                                  p !== "FULLACCESS",
-                                              ),
-                                            );
-                                          }
-                                        } else {
-                                          if (isChecked) {
-                                            permsField.onChange([
-                                              ...permsField.value,
-                                              perm,
-                                            ]);
-                                          } else {
-                                            permsField.onChange(
-                                              permsField.value.filter(
-                                                (p: string) => p !== perm,
-                                              ),
-                                            );
-                                          }
-                                        }
-                                      }}
-                                    />
-                                    <label className="text-sm">{perm}</label>
-                                  </div>
-                                );
-                              })}
-                            </div>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-
-                    <div className="flex justify-end">
-                      <Button
-                        variant="destructive"
-                        size="sm"
-                        onClick={() => remove(index)}
+    <>
+      <CardHeader className="mb-6 border-b">
+        <CardTitle>{t("settings")}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)}>
+            <div className="grid gap-5">
+              {loadingShares ? (
+                <div className="flex items-center justify-center w-full h-36">
+                  <Loading />
+                </div>
+              ) : (
+                <>
+                  {fields.map((field, index) => {
+                    const selectedUserIdsInOtherRows = fields
+                      .filter((_, i) => i !== index)
+                      .map((item) => item.userId)
+                      .filter(Boolean);
+                    const blockedUserIdsSet = new Set(
+                      selectedUserIdsInOtherRows,
+                    );
+                    const userOptionsForRow: Option[] = allUsers
+                      .filter((user) => {
+                        if (
+                          blockedUserIdsSet.has(user.id) &&
+                          user.id !== field.userId
+                        ) {
+                          return false;
+                        }
+                        return true;
+                      })
+                      .map((user) => ({
+                        value: user.id,
+                        label:
+                          user.email + (user.name ? ` - ${user.name}` : ""),
+                      }));
+                    return (
+                      <div
+                        key={field.id}
+                        className={`${
+                          field.userId === ownerId ? "hidden" : "block"
+                        } mb-6 flex flex-col gap-4 rounded-md border border-gray-200 p-4 `}
                       >
-                        <Icon icon="heroicons-outline:trash" />
-                        {t("remove")}
-                      </Button>
-                    </div>
-                  </div>
-                );
-              })}
-            </>
-          )}
+                        <FormField
+                          control={control}
+                          name="projectId"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormControl>
+                                <Input type="hidden" value={field.value} />
+                              </FormControl>
+                            </FormItem>
+                          )}
+                        />
 
-          <Button
-            type="button"
-            variant="outline"
-            onClick={() => append({ userId: "", permissions: [] })}
-            className="mb-4"
-          >
-            <Icon icon="heroicons-outline:plus" />
-            {t("addUser")}
-          </Button>
+                        <div className="flex flex-col gap-4 md:flex-row">
+                          <FormField
+                            control={control}
+                            name={`items.${index}.userId`}
+                            render={({ field: userField }) => (
+                              <FormItem className="w-full">
+                                <FormLabel>{t("user")}</FormLabel>
+                                <FormControl>
+                                  <ReactSelect
+                                    isLoading={loadingUsers}
+                                    isDisabled={disabledUsers}
+                                    options={userOptionsForRow}
+                                    onChange={(
+                                      selectedOption: SingleValue<Option>,
+                                    ) =>
+                                      userField.onChange(
+                                        selectedOption?.value || "",
+                                      )
+                                    }
+                                    value={
+                                      userOptionsForRow.find(
+                                        (option) =>
+                                          option.value === userField.value,
+                                      ) || null
+                                    }
+                                    placeholder={t("searchUser")}
+                                    isSearchable
+                                    noOptionsMessage={() => t("noOptionFound")}
+                                  />
+                                </FormControl>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
 
-          <div className="flex justify-between w-full pt-5">
-            <Button disabled={loading} type="submit">
-              {t("save")}
-            </Button>
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => {
-                router.push(`/projects`);
-              }}
-            >
-              {t("cancel")}
-            </Button>
-          </div>
-        </div>
-      </form>
-    </Form>
+                        <div className="flex flex-col">
+                          <FormField
+                            control={control}
+                            name={`items.${index}.permissions`}
+                            render={({ field: permsField }) => (
+                              <FormItem>
+                                <FormLabel>{t("permissions")}</FormLabel>
+                                <div className="grid grid-cols-2 gap-2 md:grid-cols-3">
+                                  {ALL_PERMISSIONS.filter((perm) =>
+                                    permsField.value?.includes("FULLACCESS")
+                                      ? perm === "FULLACCESS"
+                                      : true,
+                                  ).map((perm) => {
+                                    const checked =
+                                      permsField.value?.includes(perm);
+                                    return (
+                                      <div
+                                        key={perm}
+                                        className="flex items-center gap-2"
+                                      >
+                                        <Checkbox
+                                          checked={checked}
+                                          onCheckedChange={(isChecked) => {
+                                            if (perm === "FULLACCESS") {
+                                              if (isChecked) {
+                                                permsField.onChange([
+                                                  "FULLACCESS",
+                                                ]);
+                                              } else {
+                                                permsField.onChange(
+                                                  permsField.value.filter(
+                                                    (p: string) =>
+                                                      p !== "FULLACCESS",
+                                                  ),
+                                                );
+                                              }
+                                            } else {
+                                              if (isChecked) {
+                                                permsField.onChange([
+                                                  ...permsField.value,
+                                                  perm,
+                                                ]);
+                                              } else {
+                                                permsField.onChange(
+                                                  permsField.value.filter(
+                                                    (p: string) => p !== perm,
+                                                  ),
+                                                );
+                                              }
+                                            }
+                                          }}
+                                        />
+                                        <label className="text-sm">
+                                          {perm}
+                                        </label>
+                                      </div>
+                                    );
+                                  })}
+                                </div>
+                                <FormMessage />
+                              </FormItem>
+                            )}
+                          />
+                        </div>
+
+                        <div className="flex justify-end">
+                          <Button
+                            variant="destructive"
+                            size="sm"
+                            onClick={() => remove(index)}
+                          >
+                            <Icon icon="heroicons-outline:trash" />
+                            {t("remove")}
+                          </Button>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </>
+              )}
+
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => append({ userId: "", permissions: [] })}
+                className="mb-4"
+              >
+                <Icon icon="heroicons-outline:plus" />
+                {t("addUser")}
+              </Button>
+
+              <div className="flex justify-between w-full pt-5">
+                <Button disabled={loading} type="submit">
+                  {t("save")}
+                </Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => {
+                    router.push(`/projects`);
+                  }}
+                >
+                  {t("cancel")}
+                </Button>
+              </div>
+            </div>
+          </form>
+        </Form>
+      </CardContent>
+    </>
   );
 };
 

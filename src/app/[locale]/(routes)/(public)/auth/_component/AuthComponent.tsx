@@ -56,7 +56,7 @@ export function AuthComponent() {
   };
 
   return (
-    <Card className="my-5 shadow-lg ">
+    <Card className="my-4 shadow-lg ">
       <CardHeader className="space-y-1">
         <CardTitle className="text-2xl">{t("authentication")}</CardTitle>
         <CardDescription>{t("description")}</CardDescription>

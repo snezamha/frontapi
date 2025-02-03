@@ -1,10 +1,9 @@
 import { Card } from "@/components/ui/card";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
-import { getProjectById } from "@/actions/projects";
-import { Project } from "@prisma/client";
-import ProjectFormWrapper from "../_components/ProjectFormWrapper";
 import { createTranslator } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
+import StoreSettingsFormWrapper from "../../_components/StoreSettingsFormWrapper";
+import { getStoreSettings } from "@/actions/stores";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -16,35 +15,40 @@ export async function generateMetadata(props: Props) {
   const messages = await getMessages();
   const t = createTranslator({ locale, messages });
   return {
-    title: t("breadcrumb.editProject"),
+    title: t("breadcrumb.storeSettings"),
   };
 }
 
 const ProjectPage = async ({
   params,
 }: {
-  params: Promise<{ projectId: string }>;
+  params: Promise<{ projectId: string; storeId: string }>;
 }) => {
   const projectId = (await params).projectId;
+  const storeId = (await params).storeId;
+
   try {
     const t = await getTranslations("breadcrumb");
-
-    const project = (await getProjectById(projectId)) as Project;
-    if (!project) {
-      return <div></div>;
-    }
+    const storeSettings = await getStoreSettings(storeId);
     const breadcrumbItems = [
-      { title: t("projects"), link: "/projects" },
       {
-        title: t("editProject"),
-        link: `/projects/${projectId}`,
+        title: t("dashboard"),
+        link: `/${projectId}/dashboard`,
+      },
+      { title: t("stores"), link: `/${projectId}/stores` },
+      {
+        title: t("storeSettings"),
+        link: `/${projectId}/stores/${storeId}/settings`,
       },
     ];
     return (
       <div>
         <Breadcrumbs items={breadcrumbItems} />
         <Card className="my-4">
-          <ProjectFormWrapper initData={project} />
+          <StoreSettingsFormWrapper
+            initData={storeSettings.data}
+            storeId={storeId}
+          />
         </Card>
       </div>
     );

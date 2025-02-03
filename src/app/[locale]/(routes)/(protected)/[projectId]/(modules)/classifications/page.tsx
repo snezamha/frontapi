@@ -40,7 +40,7 @@ export default async function Classifications(props: ClassificationsProps) {
   try {
     const response = await getAllCategories(projectId);
     if (!Array.isArray(response)) {
-      throw new Error("Invalid response from getAllUsers");
+      throw new Error("Invalid response from getAllCategories");
     }
     const formattedCategories: CategoriesProps[] = response.map((item) => ({
       id: item.id,
@@ -55,7 +55,7 @@ export default async function Classifications(props: ClassificationsProps) {
     return (
       <div>
         <Breadcrumbs items={breadcrumbItems} />
-        <Card>
+        <Card className="my-4">
           <CategoriesClient data={formattedCategories} projectId={projectId} />
         </Card>
         <ClassificationsApiDocs />

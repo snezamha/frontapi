@@ -3,11 +3,11 @@ import { createTranslator } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { Breadcrumbs } from "@/components/shared/breadcrumbs";
 import { Card } from "@/components/ui/card";
-import { UsersClient } from "./_components/client";
-import { UsersProps } from "./_components/columns";
-import { getAllUsers } from "@/actions/users";
+import { StoresCient } from "./_components/client";
+import { StoresProps } from "./_components/columns";
+import { getAllStores } from "@/actions/stores";
 import { getProjectApiKey } from "@/actions/projects";
-import UserApiDocs from "./_components/UserApiDocs";
+import StoreApiDocs from "./_components/StoreApiDocs";
 
 type Props = {
   params: Promise<{ locale: string }>;
@@ -18,31 +18,30 @@ export async function generateMetadata(props: Props) {
   const messages = await getMessages();
   const t = createTranslator({ locale, messages });
   return {
-    title: t("breadcrumb.users"),
+    title: t("breadcrumb.stores"),
   };
 }
 
-interface LocalUsersProps {
+interface LocalStoresProps {
   params: Promise<{ projectId: string }>;
 }
 
-export default async function Users(props: LocalUsersProps) {
+export default async function Stores(props: LocalStoresProps) {
   const { projectId } = await props.params;
   const t = await getTranslations("breadcrumb");
   const breadcrumbItems = [
     { title: t("dashboard"), link: `/${projectId}/dashboard` },
-    { title: t("users"), link: `/${projectId}/users` },
+    { title: t("stores"), link: `/${projectId}/stores` },
   ];
 
   try {
-    const response = await getAllUsers(projectId);
+    const response = await getAllStores(projectId);
     if (!Array.isArray(response)) {
-      throw new Error("Invalid response from getAllUsers");
+      throw new Error("Invalid response from getAllStores");
     }
-    const formattedUsers: UsersProps[] = response.map((item) => ({
+    const formattedStores: StoresProps[] = response.map((item) => ({
       id: item.id,
-      phoneNumber: item.phoneNumber,
-      fullName: item.fullName || "",
+      title: item.title,
       createdAt: item.createdAt,
     }));
 
@@ -53,13 +52,13 @@ export default async function Users(props: LocalUsersProps) {
       <div>
         <Breadcrumbs items={breadcrumbItems} />
         <Card className="my-4">
-          <UsersClient data={formattedUsers} projectId={projectId} />
+          <StoresCient data={formattedStores} projectId={projectId} />
         </Card>
-        <UserApiDocs apiKey={apiKey} />
+        <StoreApiDocs apiKey={apiKey} />
       </div>
     );
   } catch (error) {
-    console.error("Error fetching users:", error);
-    return <div>Error loading users.</div>;
+    console.error("Error fetching stores:", error);
+    return <div>Error loading stores.</div>;
   }
 }

@@ -33,7 +33,7 @@ const Projects = async () => {
     return (
       <div>
         <Breadcrumbs items={breadcrumbItems} />
-        <Card>
+        <Card className="my-4">
           <ProjectsClient data={formattedProjects} />
         </Card>
       </div>

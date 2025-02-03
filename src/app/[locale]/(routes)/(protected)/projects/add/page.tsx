@@ -27,7 +27,7 @@ const ProjectPage = async () => {
   return (
     <div>
       <Breadcrumbs items={breadcrumbItems} />
-      <Card>
+      <Card className="my-4">
         <ProjectFormWrapper />
       </Card>
     </div>

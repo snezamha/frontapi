@@ -37,7 +37,7 @@ export default async function ClassificationPage(props: ClassificationsProps) {
   return (
     <div>
       <Breadcrumbs items={breadcrumbItems} />
-      <Card>
+      <Card className="my-4">
         <CategoryFormWrapper />
       </Card>
     </div>

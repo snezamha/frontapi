@@ -76,6 +76,14 @@ export function getMenuList(
                   pathname,
                 ),
               },
+              {
+                href: `${projectBasePath}/stores`,
+                label: t("stores"),
+                icon: "heroicons:shopping-cart",
+                active: new RegExp(`^${projectBasePath}/stores($|/.*)`).test(
+                  pathname,
+                ),
+              },
             ],
           },
         ]

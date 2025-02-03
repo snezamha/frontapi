@@ -20,12 +20,17 @@ export function formatDate(date: Date | string | number, locale: string) {
 }
 
 export function convertToSlug(titleStr: string) {
-  titleStr = titleStr.replace(/^\s+|\s+$/g, '');
+  titleStr = titleStr.replace(/^\s+|\s+$/g, "");
   titleStr = titleStr.toLowerCase();
   titleStr = titleStr
-    .replace(/[^a-z0-9_\s-ءاأإآؤئبتثجحخدذرزسشصضطظعغفقكلمنهويةى]#u/, '')
-    .replace(/\s+/g, '-')
-    .replace(/-+/g, '-');
+    .replace(/[^a-z0-9_\s-ءاأإآؤئبتثجحخدذرزسشصضطظعغفقكلمنهويةى]#u/, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-");
   const slugStr = titleStr;
   return slugStr;
+}
+
+export function formatPrice(value: number | string): string {
+  if (!value) return "";
+  return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }

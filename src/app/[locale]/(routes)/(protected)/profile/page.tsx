@@ -25,7 +25,7 @@ export default async function Profile() {
     <div>
       <Breadcrumbs items={breadcrumbItems} />
       <div className="space-y-6">
-        <Card>
+        <Card className="my-4">
           <CardHeader className="mb-6 border-b">
             <CardTitle>{t("profile")}</CardTitle>
           </CardHeader>
