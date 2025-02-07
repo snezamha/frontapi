@@ -1,25 +1,7 @@
-import createNextIntlPlugin from 'next-intl/plugin';
-const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
+import type { NextConfig } from "next";
 
-const nextConfig = {
-  experimental: {
-    authInterrupts: true,
-  },
-  images: {
-    domains: [
-      'localhost',
-      'res.cloudinary.com',
-      'lh3.googleusercontent.com',
-      'lh4.googleusercontent.com',
-      'lh5.googleusercontent.com',
-      'lh6.googleusercontent.com',
-      'googleusercontent.com',
-      'uploadthing.com',
-      'utfs.io',
-      'avatars.githubusercontent.com',
-      'githubusercontent.com',
-    ],
-  },
+const nextConfig: NextConfig = {
+  /* config options here */
 };
 
-export default withNextIntl(nextConfig);
+export default nextConfig;
