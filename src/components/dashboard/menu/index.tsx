@@ -16,7 +16,11 @@ import { useLocale, useTranslations } from 'next-intl';
 import { Icon } from '@/components/shared/icon';
 import { Link } from '@/i18n/routing';
 
-export function Menu() {
+interface MenuProps {
+  onClose: () => void;
+}
+
+export function Menu({ onClose }: MenuProps) {
   const t = useTranslations('dashboardMenu');
   const pathname = usePathname();
   const menuList = getMenuList(pathname, t);
@@ -68,7 +72,7 @@ export function Menu() {
                             className="justify-start w-full h-10 mb-1"
                             asChild
                           >
-                            <Link href={href}>
+                            <Link href={href} onClick={onClose}>
                               <span className="me-4">
                                 <Icon icon={icon} />
                               </span>

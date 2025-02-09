@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar } from '@/components/header/navbar';
+import { Navbar } from '@/components/navbar';
 
 export default async function PublicLayout({
   children,

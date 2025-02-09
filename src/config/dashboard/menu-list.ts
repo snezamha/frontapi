@@ -36,6 +36,12 @@ export function getMenuList(
           label: t('dashboard'),
           icon: 'stash:dashboard',
         },
+        {
+          href: '/translations',
+          label: t('translations'),
+          active: pathname === '/',
+          icon: 'material-symbols-light:language',
+        },
       ],
     },
   ];

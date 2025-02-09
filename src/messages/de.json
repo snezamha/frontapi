@@ -29,7 +29,8 @@
   },
   "dashboardMenu": {
     "homePage": "Startseite",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "translations": "Übersetzungen"
   },
   "translationsManagement": {
     "title": "Übersetzungsverwaltung",

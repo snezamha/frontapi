@@ -2,14 +2,14 @@ import Link from 'next/link';
 import ThemeButton from '@/components/shared/theme-switcher';
 import { Button } from '@/components/ui/button';
 import { Menu } from 'lucide-react';
-import Logo from './logo';
+import Logo from '../header/logo';
 import LocalSwitcher from '../shared/locale-switcher';
 
 interface NavbarProps {
   onSidebarToggle?: () => void;
 }
 
-export function Navbar({ onSidebarToggle }: NavbarProps) {
+export function DashboardNavbar({ onSidebarToggle }: NavbarProps) {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background">
       <div className="flex items-center px-6 h-14">

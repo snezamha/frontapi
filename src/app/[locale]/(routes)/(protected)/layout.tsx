@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
-import { Navbar } from '@/components/header/navbar';
+import { DashboardNavbar } from '@/components/dashboard/navbar';
 import { useState } from 'react';
-import { Sidebar } from '@/components/dashboard/sidebar';
+import { DashboardSidebar } from '@/components/dashboard/sidebar';
 
 export default function ProtectedLayout({
   children,
@@ -14,10 +14,15 @@ export default function ProtectedLayout({
 
   return (
     <div className="flex h-screen flex-col overflow-hidden">
-      <Navbar onSidebarToggle={() => setSidebarOpen(!sidebarOpen)} />
+      <DashboardNavbar onSidebarToggle={() => setSidebarOpen(!sidebarOpen)} />
       <div className="flex flex-1 overflow-hidden">
-        <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-        <main className="flex-1 overflow-auto">{children}</main>
+        <DashboardSidebar
+          open={sidebarOpen}
+          onClose={() => setSidebarOpen(false)}
+        />
+        <main className="flex-1 overflow-auto mx-auto p-4 space-y-6">
+          {children}
+        </main>
       </div>
     </div>
   );

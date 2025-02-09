@@ -29,7 +29,8 @@
   },
   "dashboardMenu": {
     "homePage": "Home page",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "translations": "Translations"
   },
   "translationsManagement": {
     "title": "Translations Management",

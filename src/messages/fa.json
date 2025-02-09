@@ -29,7 +29,8 @@
   },
   "dashboardMenu": {
     "homePage": "صفحه اصلی",
-    "dashboard": "داشبورد"
+    "dashboard": "داشبورد",
+    "translations": "ترجمه‌ها"
   },
   "translationsManagement": {
     "title": "مدیریت ترجمه‌ها",

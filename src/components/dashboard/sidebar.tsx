@@ -7,7 +7,7 @@ interface SidebarProps {
   onClose: () => void;
 }
 
-export function Sidebar({ open, onClose }: SidebarProps) {
+export function DashboardSidebar({ open, onClose }: SidebarProps) {
   const locale = useLocale();
 
   return (
@@ -21,7 +21,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
 
       <div
         className={cn(
-          'fixed inset-y-0 z-50 w-64 pt-2 ltr:border-r rtl:border-l overflow-y-auto transition duration-300 ease-in-out transform',
+          'fixed inset-y-0 z-50 w-64 pt-2 ltr:border-r rtl:border-l bg-white dark:bg-gray-900 overflow-y-auto transition duration-300 ease-in-out transform',
           locale === 'fa'
             ? open
               ? 'right-0 translate-x-0'
@@ -32,7 +32,7 @@ export function Sidebar({ open, onClose }: SidebarProps) {
           'lg:translate-x-0 lg:static lg:inset-0'
         )}
       >
-        <Menu />
+        <Menu onClose={onClose} />
       </div>
     </>
   );
