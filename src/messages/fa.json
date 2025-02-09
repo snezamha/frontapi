@@ -1,0 +1,56 @@
+{
+  "homePage": {
+    "openSource": "رایگان و متن‌باز!",
+    "heroTitle": "ساخت API فرانت‌اند",
+    "heroDescription": "داده‌هایی که در فرانت‌اند نیاز دارید را مدیریت کنید!",
+    "getStarted": "شروع کنید",
+    "featuresSubtext": "Frontapi.ir چه امکاناتی ارائه می‌دهد؟",
+    "featuresTitle": "ویژگی‌ها",
+    "projectTitle": "پروژه",
+    "projectDescription": "پروژه خود را تعریف کنید و به راحتی بین پروژه‌های خود جابجا شوید.",
+    "shopTitle": "فروشگاه",
+    "shopDescription": "همه آنچه یک فروشگاه پیشرفته نیاز دارد اینجاست. محصولات خود را مدیریت کنید.",
+    "analyticsTitle": "تحلیل‌ها",
+    "analyticsDescription": "بررسی سفارشات و تحلیل‌های مورد نیاز پروژه شما.",
+    "updateTitle": "بروزرسانی",
+    "updateDescription": "ویژگی‌های جدید به زودی اضافه و بروزرسانی خواهند شد.",
+    "openSourceSubtext": "با خیال راحت کد منبع را مشاهده یا در آن مشارکت کنید!",
+    "openSourceTitle": "کاملاً متن‌باز",
+    "github": "گیت‌هاب"
+  },
+  "notFound": {
+    "somethingWentWrong": "مشکلی پیش آمده است",
+    "pageNotFound": "متاسفیم، صفحه‌ای که به دنبال آن هستید وجود ندارد یا منتقل شده است.",
+    "goBack": "بازگشت",
+    "backToHome": "بازگشت به خانه",
+    "accessPermission": "مجوز دسترسی",
+    "unauthorized": "غیر مجاز",
+    "tryAgain": "دوباره تلاش کنید"
+  },
+  "dashboardMenu": {
+    "homePage": "صفحه اصلی",
+    "dashboard": "داشبورد"
+  },
+  "translationsManagement": {
+    "title": "مدیریت ترجمه‌ها",
+    "scopeLabel": "اسکوپ:",
+    "scopePlaceholder": "انتخاب اسکوپ",
+    "addScope": "افزودن اسکوپ جدید",
+    "deleteScope": "حذف اسکوپ",
+    "enterNewScopeName": "نام اسکوپ جدید را وارد کنید:",
+    "deleteScopeConfirmation": "آیا مطمئن هستید که می‌خواهید اسکوپ \"{scope}\" را حذف کنید؟",
+    "invalidScope": "اسکوپ نامعتبر است.",
+    "confirm": "تایید",
+    "cancel": "لغو",
+    "save": "ذخیره",
+    "translationsSaved": "ترجمه‌ها با موفقیت ذخیره شدند.",
+    "translationsSaveError": "خطا در ذخیره ترجمه‌ها رخ داد.",
+    "faLabel": "فارسی",
+    "enLabel": "انگلیسی",
+    "deLabel": "آلمانی",
+    "addKeyFor": "افزودن کلید جدید برای {language}",
+    "enterNewKeyForLocale": "کلید جدید برای زبان {locale} را وارد کنید:",
+    "deleteKey": "حذف",
+    "noScope": "لطفا یک اسکوپ انتخاب کنید یا اسکوپ جدید بسازید."
+  }
+}

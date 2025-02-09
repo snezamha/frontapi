@@ -1,0 +1,56 @@
+{
+  "homePage": {
+    "openSource": "Free and open source!",
+    "heroTitle": "Build your Frontend API",
+    "heroDescription": "Manage the data that you need on the front end!",
+    "getStarted": "Get Started",
+    "featuresSubtext": "What does Frontapi.ir offer?",
+    "featuresTitle": "Features",
+    "projectTitle": "Project",
+    "projectDescription": "Define your project and easily switch between your projects.",
+    "shopTitle": "Shop",
+    "shopDescription": "Everything a high-end store needs is here. Manage your products here.",
+    "analyticsTitle": "Analytics",
+    "analyticsDescription": "Find the order review and analysis needed in your project here.",
+    "updateTitle": "Update",
+    "updateDescription": "Things will be added and updated soon with your help.",
+    "openSourceSubtext": "Feel free to view the codebase or contribute!",
+    "openSourceTitle": "Fully Open Source",
+    "github": "GitHub"
+  },
+  "notFound": {
+    "somethingWentWrong": "Something went wrong",
+    "pageNotFound": "Sorry, the page you are looking for doesn't exist or has been moved.",
+    "goBack": "Go back",
+    "backToHome": "Back to home",
+    "accessPermission": "Access Permission",
+    "unauthorized": "Unauthorized",
+    "tryAgain": "Try again"
+  },
+  "dashboardMenu": {
+    "homePage": "Home page",
+    "dashboard": "Dashboard"
+  },
+  "translationsManagement": {
+    "title": "Translations Management",
+    "scopeLabel": "Scope:",
+    "scopePlaceholder": "Select a scope",
+    "addScope": "Add new scope",
+    "deleteScope": "Delete scope",
+    "enterNewScopeName": "Please enter the new scope name:",
+    "deleteScopeConfirmation": "Are you sure you want to delete scope \"{scope}\"?",
+    "invalidScope": "Invalid scope.",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "save": "Save",
+    "translationsSaved": "Translations saved successfully.",
+    "translationsSaveError": "Error saving translations.",
+    "faLabel": "Persian",
+    "enLabel": "English",
+    "deLabel": "German",
+    "addKeyFor": "Add new key for {language}",
+    "enterNewKeyForLocale": "Please enter the new key for {locale}:",
+    "deleteKey": "Delete",
+    "noScope": "Please select a scope or create a new one."
+  }
+}

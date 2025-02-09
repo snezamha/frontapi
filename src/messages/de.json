@@ -1,0 +1,56 @@
+{
+  "homePage": {
+    "openSource": "Kostenlos und Open Source!",
+    "heroTitle": "Erstelle deine Frontend API",
+    "heroDescription": "Verwalte die Daten, die du im Frontend benötigst!",
+    "getStarted": "Loslegen",
+    "featuresSubtext": "Was bietet Frontapi.ir?",
+    "featuresTitle": "Funktionen",
+    "projectTitle": "Projekt",
+    "projectDescription": "Definiere dein Projekt und wechsle einfach zwischen deinen Projekten.",
+    "shopTitle": "Shop",
+    "shopDescription": "Alles, was ein High-End-Shop braucht, ist hier. Verwalte deine Produkte hier.",
+    "analyticsTitle": "Analytik",
+    "analyticsDescription": "Finde die erforderlichen Bestellüberprüfungen und Analysen für dein Projekt hier.",
+    "updateTitle": "Update",
+    "updateDescription": "Dinge, die bald hinzugefügt und aktualisiert werden, mit deiner Hilfe.",
+    "openSourceSubtext": "Schau dir den Code an oder trage zur Entwicklung bei!",
+    "openSourceTitle": "Vollständig Open Source",
+    "github": "GitHub"
+  },
+  "notFound": {
+    "somethingWentWrong": "Etwas ist schiefgelaufen",
+    "pageNotFound": "Entschuldigung, die Seite, die Sie suchen, existiert nicht oder wurde verschoben.",
+    "goBack": "Zurück",
+    "backToHome": "Zurück zur Startseite",
+    "accessPermission": "Zugriffsberechtigung",
+    "unauthorized": "Unbefugt",
+    "tryAgain": "Erneut versuchen"
+  },
+  "dashboardMenu": {
+    "homePage": "Startseite",
+    "dashboard": "Dashboard"
+  },
+  "translationsManagement": {
+    "title": "Übersetzungsverwaltung",
+    "scopeLabel": "Bereich:",
+    "scopePlaceholder": "Wählen Sie einen Bereich",
+    "addScope": "Neuen Bereich hinzufügen",
+    "deleteScope": "Bereich löschen",
+    "enterNewScopeName": "Bitte geben Sie den neuen Bereichsnamen ein:",
+    "deleteScopeConfirmation": "Sind Sie sicher, dass Sie den Bereich \"{scope}\" löschen möchten?",
+    "invalidScope": "Ungültiger Bereich.",
+    "confirm": "Bestätigen",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "translationsSaved": "Übersetzungen wurden erfolgreich gespeichert.",
+    "translationsSaveError": "Fehler beim Speichern der Übersetzungen.",
+    "faLabel": "Persisch",
+    "enLabel": "Englisch",
+    "deLabel": "Deutsch",
+    "addKeyFor": "Neuen Schlüssel für {language} hinzufügen",
+    "enterNewKeyForLocale": "Bitte geben Sie den neuen Schlüssel für {locale} ein:",
+    "deleteKey": "Löschen",
+    "noScope": "Bitte wählen Sie einen Bereich aus oder erstellen Sie einen neuen."
+  }
+}
